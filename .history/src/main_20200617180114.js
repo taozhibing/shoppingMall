@@ -4,9 +4,7 @@ import router from './router'
 import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';
-import api from './http/api';
 
-vue.prototype.$api = api;
 Vue.use(Vant);
 
 Vue.config.productionTip = false
