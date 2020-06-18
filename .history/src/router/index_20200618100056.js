@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
+  const routes = [
   {
     path: '/',
     name: 'Home',
@@ -14,8 +14,8 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import('../views/login/Login'),
-    meta: {
-      title: '登录页'
+    meta : {
+      title : '登录页'
     }
   }
 ]
@@ -26,8 +26,4 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title
-  next()
-})
 export default router
