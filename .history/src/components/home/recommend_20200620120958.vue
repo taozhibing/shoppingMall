@@ -4,7 +4,7 @@
       <div class="title">商品推荐</div>
       <div class="goods" ref="goods">
         <div class="content">
-            <div v-for="(item,index) in recommend" :key="index" class="t-box">
+            <div v-for="(item,index) in recommend" :key="index" class="box">
               <div class="box">
                 <div class="box1">
                   <div>
@@ -82,9 +82,6 @@ export default {
 .content {
   flex: 1;
   display: flex;
-}
-.t-box {
-  width: 134px ;
 }
 .box {
   width: 80%;

@@ -2,30 +2,32 @@
   <div>
     <div class="container">
       <div class="title">商品推荐</div>
-      <div class="goods" ref="goods">
+      <div class="goods">
         <div class="content">
-            <div v-for="(item,index) in recommend" :key="index" class="t-box">
-              <div class="box">
-                <div class="box1">
-                  <div>
-                    <img :src="item.image" alt />
-                  </div>
-                </div>
+        <van-swipe :loop="false" :width="125" :show-indicators="false">
+          <van-swipe-item v-for="(item,index) in recommend" :key="index">
+            <div class="box">
+              <div class="box1">
                 <div>
-                  <div class="box2">{{item.goodsName}}</div>
-                  <div class="box3">
-                    <span>￥{{item.mallPrice}}</span>
-                    <span class="box3-price">￥{{item.price}}</span>
-                  </div>
-                </div>
-                <div class="box4">
-                  <div class="box5">
-                    <van-icon name="cart-o" />
-                  </div>
-                  <div class="text">查看详情</div>
+                  <img :src="item.image" alt />
                 </div>
               </div>
+              <div>
+                <div class="box2">{{item.goodsName}}</div>
+                <div class="box3">
+                  <span>￥{{item.mallPrice}}</span>
+                  <span class="box3-price">￥{{item.price}}</span>
+                </div>
+              </div>
+              <div class="box4">
+                <div class="box5">
+                  <van-icon name="cart-o" />
+                </div>
+                <div class="text">查看详情</div>
+              </div>
             </div>
+          </van-swipe-item>
+        </van-swipe>
         </div>
       </div>
     </div>
@@ -33,7 +35,6 @@
 </template>
 
 <script>
-import BScroll from "better-scroll";
 export default {
   name: "",
   props: {
@@ -47,12 +48,7 @@ export default {
     return {};
   },
   methods: {},
-  mounted() {
-    new BScroll(this.$refs.goods, {
-      scrollX: true,
-      click: true
-    });
-  },
+  mounted() {},
   watch: {},
   computed: {}
 };
@@ -80,16 +76,11 @@ export default {
   overflow: hidden;
 }
 .content {
-  flex: 1;
-  display: flex;
-}
-.t-box {
-  width: 134px ;
+  flex :1
 }
 .box {
-  width: 80%;
+  width: 90%;
   margin-left: 5%;
-  overflow: hidden;
 }
 .box1 {
   display: flex;
@@ -118,11 +109,11 @@ img {
   text-decoration: line-through;
 }
 .box4 {
-  display: flex;
-  align-items: center;
-  height: 30px;
-  border-radius: 6px;
-  overflow: hidden;
+ display: flex;
+ align-items: center;
+ height: 30px;
+ border-radius: 6px;
+ overflow: hidden;
 }
 .box5 {
   background: yellow;

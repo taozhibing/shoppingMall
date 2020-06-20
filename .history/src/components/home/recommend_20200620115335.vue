@@ -4,7 +4,8 @@
       <div class="title">商品推荐</div>
       <div class="goods" ref="goods">
         <div class="content">
-            <div v-for="(item,index) in recommend" :key="index" class="t-box">
+          <van-swipe :loop="false" :width="125" :show-indicators="false">
+            <van-swipe-item v-for="(item,index) in recommend" :key="index">
               <div class="box">
                 <div class="box1">
                   <div>
@@ -25,7 +26,8 @@
                   <div class="text">查看详情</div>
                 </div>
               </div>
-            </div>
+            </van-swipe-item>
+          </van-swipe>
         </div>
       </div>
     </div>
@@ -83,13 +85,9 @@ export default {
   flex: 1;
   display: flex;
 }
-.t-box {
-  width: 134px ;
-}
 .box {
-  width: 80%;
+  width: 90%;
   margin-left: 5%;
-  overflow: hidden;
 }
 .box1 {
   display: flex;

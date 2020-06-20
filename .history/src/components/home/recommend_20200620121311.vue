@@ -84,7 +84,8 @@ export default {
   display: flex;
 }
 .t-box {
-  width: 134px ;
+  width: 134px !important;
+  height: 136px !important;
 }
 .box {
   width: 80%;
