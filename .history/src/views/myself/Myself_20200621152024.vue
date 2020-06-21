@@ -102,6 +102,7 @@ export default {
   data() {
     return {
       userInfo: {},
+      active: 0
     };
   },
   methods: {
