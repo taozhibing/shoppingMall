@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div class="top">商品分类</div>
-    <div class="container">
+    <div class="box">
       <van-sidebar>
         <van-sidebar-item
           v-for="(item,index) in category"
@@ -37,7 +36,7 @@
 
 <script>
 export default {
-  name: "ClassiFication",
+  name: "",
   props: {},
   components: {},
   data() {
@@ -54,9 +53,9 @@ export default {
     };
   },
   methods: {
-    getData() {
+    classification() {
       this.$api
-        .classiFication(this.id)
+        .classification(this.id)
         .then(res => {
           this.dataList = res.dataList;
           console.log(res);
@@ -74,10 +73,10 @@ export default {
     if (this.$route.query.index) {
       this.activeIndex = this.$route.query.index;
       this.id = this.category[this.activeIndex].bxMallSubDto[0].mallSubId;
-      this.getData();
+      this.classification();
     } else {
       this.id = this.category[0].bxMallSubDto[0].mallSubId;
-      this.getData();
+      this.classification();
     }
   },
   watch: {},
@@ -85,16 +84,8 @@ export default {
 };
 </script>
 
-<style scoped lang='scss'>
-.top {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffff;
-}
-.container {
+<style scoped>
+.box {
   display: flex;
 }
 .r-box {
@@ -131,14 +122,12 @@ export default {
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 70%;
-  font-weight: 700;
 }
 .rbox2-font1 {
   color: red;
   height: 40px;
   line-height: 40px;
   font-size: 14px;
-  font-weight: 700;
 }
 .rbox3-font {
   text-decoration: line-through;
@@ -146,9 +135,5 @@ export default {
   line-height: 40px;
   font-size: 12px;
   margin-left: 10px;
-  color:rgb(165, 165, 165);
-}
-.van-sidebar-item {
-  margin-top: -8px;
 }
 </style>

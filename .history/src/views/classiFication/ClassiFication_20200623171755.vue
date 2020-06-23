@@ -42,15 +42,10 @@ export default {
   components: {},
   data() {
     return {
-      activeKey: 0,
-      arr: "",
-      active: 0,
-      bxMallSubDto: [],
-      mallCategoryName: "",
       category: [],
-      id: "",
-      activeIndex: 0,
-      dataList: []
+      bxMallSubDto: [],
+      dataList: [],
+      id: ""
     };
   },
   methods: {
@@ -67,6 +62,7 @@ export default {
     }
   },
   mounted() {
+    this.getData();
     this.category = JSON.parse(localStorage.getItem("category"));
     this.bxMallSubDto = this.category[0].bxMallSubDto;
     console.log(this.category);
@@ -96,59 +92,5 @@ export default {
 }
 .container {
   display: flex;
-}
-.r-box {
-  width: 80%;
-}
-.r-box1 {
-  height: 120px;
-  display: flex;
-  border-bottom: 1px solid rgb(238, 238, 238);
-  background: white;
-  align-items: center;
-}
-.r-box2 {
-  width: 80px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: skyblue;
-  margin-right: 15px;
-  margin-left: 15px;
-  border: 1px solid rgb(238, 238, 238);
-}
-.r-box3 {
-  display: flex;
-  align-items: center;
-}
-.rbox2-font {
-  color: red;
-  height: 40px;
-  line-height: 40px;
-  font-size: 14px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 70%;
-  font-weight: 700;
-}
-.rbox2-font1 {
-  color: red;
-  height: 40px;
-  line-height: 40px;
-  font-size: 14px;
-  font-weight: 700;
-}
-.rbox3-font {
-  text-decoration: line-through;
-  height: 40px;
-  line-height: 40px;
-  font-size: 12px;
-  margin-left: 10px;
-  color:rgb(165, 165, 165);
-}
-.van-sidebar-item {
-  margin-top: -8px;
 }
 </style>

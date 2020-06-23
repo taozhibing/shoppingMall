@@ -67,6 +67,7 @@ export default {
     }
   },
   mounted() {
+    this.getData();
     this.category = JSON.parse(localStorage.getItem("category"));
     this.bxMallSubDto = this.category[0].bxMallSubDto;
     console.log(this.category);
@@ -131,14 +132,12 @@ export default {
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 70%;
-  font-weight: 700;
 }
 .rbox2-font1 {
   color: red;
   height: 40px;
   line-height: 40px;
   font-size: 14px;
-  font-weight: 700;
 }
 .rbox3-font {
   text-decoration: line-through;
@@ -146,9 +145,5 @@ export default {
   line-height: 40px;
   font-size: 12px;
   margin-left: 10px;
-  color:rgb(165, 165, 165);
-}
-.van-sidebar-item {
-  margin-top: -8px;
 }
 </style>

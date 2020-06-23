@@ -131,14 +131,12 @@ export default {
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 70%;
-  font-weight: 700;
 }
 .rbox2-font1 {
   color: red;
   height: 40px;
   line-height: 40px;
   font-size: 14px;
-  font-weight: 700;
 }
 .rbox3-font {
   text-decoration: line-through;

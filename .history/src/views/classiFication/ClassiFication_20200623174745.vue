@@ -10,7 +10,7 @@
         />
       </van-sidebar>
       <div class="r-box">
-        <van-tabs v-model="active" v-if="bxMallSubDto.length > 0">
+        <van-tabs v-model="active" v-if="bxMallSubDto.index > 0">
           <van-tab v-for="(item, index) in bxMallSubDto" :key="index" :title="item.mallSubName">
             <template>
               <div>
