@@ -65,7 +65,7 @@
           <van-tab title="商品评论"></van-tab>
         </van-tabs>
       </van-sticky>
-         <div>
+         <div ref="container">
             <div v-if="indexs===0">
               <!--  商品详情 -->
               <div v-html="obj.detail"></div>
@@ -166,6 +166,12 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+     onClick(name, title) {
+      this.indexs = name;
+    },
+    onClick(name) {
+      this.indexs = name;
     },
   },
   mounted() {

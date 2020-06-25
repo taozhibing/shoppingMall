@@ -26,20 +26,17 @@
           <!-- 未登陆  点击收藏-->
           <div v-if="nickname === ''" @click="collectGoods">
             收藏
-            <van-icon name="like-o" color="red" />
-            <!-- <van-rate v-model="value" icon="like" void-icon="like-o" color="#ee0a24" void-color="#eee" :count="1"/> -->
+            <van-rate v-model="value" icon="like" void-icon="like-o" color="#ee0a24" void-color="#eee" :count="1"/>
           </div>
           <!--  未收藏  点击收藏-->
           <div v-else-if="isCollect === 0" @click="collectGoods">
             收藏
-            <van-icon name="like-o" color="red" />
-           <!-- <van-rate v-model="value" icon="like" void-icon="like-o" color="#ee0a24" void-color="#eee" :count="1"/> -->
+           <van-rate v-model="value" icon="like" void-icon="like-o" color="#ee0a24" void-color="#eee" :count="1"/>
           </div>
           <!--  已登录且已收藏 点击取消收藏 -->
           <div v-else @click="cancelCollect">
             取消收藏
-            <van-icon name="like" color="red" />
-            <!-- <van-rate v-model="value" icon="like" void-icon="like-o" color="#eee" void-color="#ee0a24" :count="1"/> -->
+            <van-rate v-model="value" icon="like" void-icon="like-o" color="#eee" void-color="#ee0a24" :count="1"/>
           </div>
         </div>
       </div>
@@ -59,22 +56,10 @@
         </div>
       </div>
       <div>
-      <van-sticky :container="container">
         <van-tabs title-active-color="red">
-          <van-tab title="商品详情"></van-tab>
+          <van-tab title="商品详情"><div class="img"><img :src="obj.detail" alt=""></div></van-tab>
           <van-tab title="商品评论"></van-tab>
         </van-tabs>
-      </van-sticky>
-         <div>
-            <div v-if="indexs===0">
-              <!--  商品详情 -->
-              <div v-html="obj.detail"></div>
-              <div class="null"></div>
-            </div>
-            <div v-else>
-              <!-- 商品评价 -->
-            </div>
-          </div>
       </div>
     </div>
     <div>
@@ -105,8 +90,6 @@ export default {
       nickname: "",
       isCollect: "",
       id: "",
-      container: null,
-      indexs : 0
     };
   },
   methods: {
@@ -166,7 +149,7 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
+    }
   },
   mounted() {
    this.getisCollection();

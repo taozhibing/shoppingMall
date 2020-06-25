@@ -65,16 +65,6 @@
           <van-tab title="商品评论"></van-tab>
         </van-tabs>
       </van-sticky>
-         <div>
-            <div v-if="indexs===0">
-              <!--  商品详情 -->
-              <div v-html="obj.detail"></div>
-              <div class="null"></div>
-            </div>
-            <div v-else>
-              <!-- 商品评价 -->
-            </div>
-          </div>
       </div>
     </div>
     <div>
@@ -105,8 +95,6 @@ export default {
       nickname: "",
       isCollect: "",
       id: "",
-      container: null,
-      indexs : 0
     };
   },
   methods: {
@@ -166,7 +154,7 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
+    }
   },
   mounted() {
    this.getisCollection();

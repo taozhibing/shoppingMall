@@ -7,6 +7,7 @@
         </div>
       </div>
       <div class="pic">
+        <img :src="obj.image" alt width="100%" @click="img" />
         <van-swipe :autoplay="3000" class="swipe-img" :stop-propagation="false">
         <van-swipe-item v-for="(item,index) in images" :key="item.id">
           <img :src="item" class="detail-imgs" @click="show = true" />
@@ -26,20 +27,17 @@
           <!-- 未登陆  点击收藏-->
           <div v-if="nickname === ''" @click="collectGoods">
             收藏
-            <van-icon name="like-o" color="red" />
-            <!-- <van-rate v-model="value" icon="like" void-icon="like-o" color="#ee0a24" void-color="#eee" :count="1"/> -->
+            <van-rate v-model="value" icon="like" void-icon="like-o" color="#ee0a24" void-color="#eee" :count="1"/>
           </div>
           <!--  未收藏  点击收藏-->
           <div v-else-if="isCollect === 0" @click="collectGoods">
             收藏
-            <van-icon name="like-o" color="red" />
-           <!-- <van-rate v-model="value" icon="like" void-icon="like-o" color="#ee0a24" void-color="#eee" :count="1"/> -->
+           <van-rate v-model="value" icon="like" void-icon="like-o" color="#ee0a24" void-color="#eee" :count="1"/>
           </div>
           <!--  已登录且已收藏 点击取消收藏 -->
           <div v-else @click="cancelCollect">
             取消收藏
-            <van-icon name="like" color="red" />
-            <!-- <van-rate v-model="value" icon="like" void-icon="like-o" color="#eee" void-color="#ee0a24" :count="1"/> -->
+            <van-rate v-model="value" icon="like" void-icon="like-o" color="#eee" void-color="#ee0a24" :count="1"/>
           </div>
         </div>
       </div>
@@ -59,22 +57,10 @@
         </div>
       </div>
       <div>
-      <van-sticky :container="container">
         <van-tabs title-active-color="red">
-          <van-tab title="商品详情"></van-tab>
+          <van-tab title="商品详情"><div class="img"><img :src="obj.detail" alt=""></div></van-tab>
           <van-tab title="商品评论"></van-tab>
         </van-tabs>
-      </van-sticky>
-         <div>
-            <div v-if="indexs===0">
-              <!--  商品详情 -->
-              <div v-html="obj.detail"></div>
-              <div class="null"></div>
-            </div>
-            <div v-else>
-              <!-- 商品评价 -->
-            </div>
-          </div>
       </div>
     </div>
     <div>
@@ -105,8 +91,6 @@ export default {
       nickname: "",
       isCollect: "",
       id: "",
-      container: null,
-      indexs : 0
     };
   },
   methods: {
@@ -166,7 +150,7 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
+    }
   },
   mounted() {
    this.getisCollection();
@@ -213,16 +197,9 @@ export default {
   left: 10px;
 }
 .pic {
+  display: flex;
   width: 100%;
   height: 100%;
-}
-.swipe-img {
-  width: 100%;
-  height: 375px;
-}
-.detail-imgs {
-  width: 100%;
-  height: 375px;
 }
 .price {
   color: rgb(238, 61, 61);
