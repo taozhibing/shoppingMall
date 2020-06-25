@@ -65,10 +65,6 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
-    clicked() {
-      this.category = JSON.parse(localStorage.getItem('category'));
-      this.bxMallSubDto = this.category[this.activeKey].bxMallSubDto;
     }
   },
   mounted() {

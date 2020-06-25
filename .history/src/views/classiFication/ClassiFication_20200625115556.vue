@@ -12,11 +12,11 @@
 
       <div class="r-box">
         <van-tabs v-model="active">
-          <div v-for="(item, index) in bxMallSubDto" :key="index" @click="clicked">
+          <div v-for="(item, index) in bxMallSubDto" :key="index">
             <van-tab :title="item.mallSubName">
               <template>
                 <div>
-                  <div class="r-box1" v-for="(item,index) in obj" :key="index">
+                  <div class="r-box1" v-for="(item,index) in dataList" :key="index">
                     <div class="r-box2">
                       <img :src="item.image" alt width="80px" />
                     </div>
@@ -46,29 +46,26 @@ export default {
   data() {
     return {
       activeKey: 0,
+      arr: "",
       active: 0,
       bxMallSubDto: [],
       mallCategoryName: "",
       category: [],
       id: "",
-      obj: []
+      dataList: []
     };
   },
   methods: {
-    getData(id) {
+    getData() {
       this.$api
         .classiFication(this.id)
         .then(res => {
-          this.obj = res.dataList;
+          this.dataList = res.dataList;
           console.log(res);
         })
         .catch(err => {
           console.log(err);
         });
-    },
-    clicked() {
-      this.category = JSON.parse(localStorage.getItem('category'));
-      this.bxMallSubDto = this.category[this.activeKey].bxMallSubDto;
     }
   },
   mounted() {
