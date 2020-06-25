@@ -1,0 +1,192 @@
+<template>
+<div></div>
+</template>
+
+<script>
+export default {
+  name: "Detail",
+  props: {},
+  components: {},
+  data() {
+    return {
+      ids: "",
+      obj: {},
+      show: false,
+      index: 0,
+      images: [],
+      closeable: true,
+      value: 1,
+      nickname: "",
+      isCollect: "",
+      id: "",
+      goods: ""
+    };
+  },
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+    onChange(index) {
+      this.index = index;
+    },
+    img() {
+      this.show = true;
+    },
+    // 查看商品是否已收藏
+    getisCollection() {
+      this.$api
+        .isCollection(this.obj._id)
+        .then(res => {
+          // 将收藏与否的结果 赋值给 收藏与否标识
+          this.isCollect = res.isCollection;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    // 收藏商品
+    collectGoods() {
+      if (this.nickname !== "") {
+        this.$api
+          .collection(goods)
+          .then(res => {
+            // 弹框提示
+            this.$toast.success(res.msg);
+            // 重新查看商品是否被收藏
+            this.getisCollection();
+            console.log(goods);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else {
+        this.$dialog
+          .confirm({
+            title: "未检测到登录记录，前往登录"
+          })
+          .then(() => {
+            this.$router.push("/login");
+          })
+          .catch(() => {});
+      }
+    },
+    // 取消收藏
+    cancelCollect() {
+      this.$api
+        .cancelCollection(this.obj._id)
+        .then(res => {
+          // 弹框提示
+          this.$toast.success(res.msg);
+          // 重新查看商品是否被收藏
+          this.getisCollection();
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  },
+  mounted() {
+    this.nickname = localStorage.getItem("nickname");
+    this.ids = this.$route.query.id;
+    this.$api
+      .oneGoods(this.ids)
+      .then(res => {
+        this.obj = res.goods.goodsOne;
+        this.images.push(this.obj.image);
+        this.images.push(this.obj.image_path);
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+  watch: {},
+  computed: {}
+};
+</script>
+
+<style scoped lang='scss'>
+.container {
+  width: 100%;
+  height: 100%;
+}
+.submit {
+  width: 100%;
+  height: 50px;
+}
+.icon {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #999;
+  border-radius: 15px;
+  background: #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.pic {
+  width: 100%;
+  height: 100%;
+}
+.price {
+  color: rgb(238, 61, 61);
+  font-size: 14px;
+  width: 300px;
+  height: 100%;
+  margin-left: 10px;
+}
+.box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #999;
+  font-size: 12px;
+}
+.box1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.name {
+  width: 300px;
+  height: 100%;
+  margin-left: 10px;
+}
+.tab {
+  display: flex;
+}
+.tab1 {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tab2 {
+  display: flex;
+  align-items: center;
+  width: 95%;
+  height: 90%;
+}
+.icn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tab3 {
+  margin-left: 10px;
+  background: red;
+  color: #fff;
+}
+.tab4 {
+  width: 140px;
+}
+.tab5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
