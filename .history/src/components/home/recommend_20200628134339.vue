@@ -20,7 +20,7 @@
               </div>
               <div class="box4">
                 <div class="box5">
-                  <van-icon name="cart-o" @click="addShoppingCart(index)" />
+                  <van-icon name="cart-o" @click="addShoppingCart" />
                 </div>
                 <div class="text" @click="goDetail(index)">查看详情</div>
               </div>
@@ -46,6 +46,7 @@ export default {
   data() {
     return {
       id: "",
+      obj : {}
     };
   },
   methods: {
@@ -55,34 +56,43 @@ export default {
         query: { id: this.recommend[index].goodsId }
       });
     },
-    addShoppingCart(index) {
-      this.nickname = localStorage.getItem("nickname");
-      if (this.nickname === "") {
-        this.$dialog
-          .confirm({
-            message: "您还没有登录，是否要登录？"
-          })
-          .then(res => {
-            this.$router.push("/login");
-          })
-          .catch(() => {});
-      } else {
-        this.$api
-          .addShop({
-            id: this.recommend[index].goodsId
-          })
-          .then(res => {
-            this.$toast.success("加入购物车成功");
-          })
-          .catch(err => {});
-      }
-    }
+    // addShoppingCart() {
+    //   this.nickname = localStorage.getItem("nickname");
+    //   if (this.nickname === "") {
+    //     this.$dialog
+    //       .confirm({
+    //         message: "您还没有登录，是否要登录？"
+    //       })
+    //       .then(res => {
+    //         this.$router.push("/login");
+    //       })
+    //       .catch(() => {});
+    //   } else {
+    //     this.$api
+    //       .addShop({
+    //         id: this.obj.id
+    //       })
+    //       .then(res => {
+    //         this.$toast.success("加入购物车成功");
+    //       })
+    //       .catch(err => {});
+    //   }
+    // }
   },
   mounted() {
     new BScroll(this.$refs.goods, {
       scrollX: true,
       click: true
     });
+    // this.$api
+    //   .oneGoods(this.ids)
+    //   .then(res => {
+    //     this.obj = res.goods.goodsOne;
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   },
   watch: {},
   computed: {}

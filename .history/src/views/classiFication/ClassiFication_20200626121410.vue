@@ -3,25 +3,20 @@
     <div class="top">商品分类</div>
     <div class="container">
       <div>
-        <van-sidebar v-model="activeKey" @change="change">
-          <div v-for="(item,index) in category" :key="index" >
+        <van-sidebar v-model="activeKey">
+          <div v-for="(item,index) in category" :key="index" @click="clicked">
             <van-sidebar-item :title="item.mallCategoryName" />
           </div>
         </van-sidebar>
       </div>
 
       <div class="r-box">
-        <van-tabs v-model="active" @click="getData">
-          <div v-for="(item, index) in bxMallSubDto" :key="index">
+        <van-tabs v-model="active">
+          <div v-for="(item, index) in bxMallSubDto" :key="index" @click="clicked">
             <van-tab :title="item.mallSubName">
               <template>
                 <div>
-                  <div
-                    class="r-box1"
-                    v-for="(item,index) in obj"
-                    :key="index"
-                    @click="goDetail(item)"
-                  >
+                  <div class="r-box1" v-for="(item,index) in obj" :key="index" @click="goDetail">
                     <div class="r-box2">
                       <img :src="item.image" alt width="80px" />
                     </div>
@@ -57,11 +52,11 @@ export default {
       category: [],
       ids: "",
       obj: [],
-      id: ""
+      id:""
     };
   },
   methods: {
-    getData() {
+    getData(id) {
       this.$api
         .classiFication(this.ids)
         .then(res => {
@@ -72,18 +67,12 @@ export default {
           console.log(err);
         });
     },
-    change(index) {
-      this.active = 0;
-      this.ids = this.category[index].bxMallSubDto[this.active].mallSubId;
-      this.category = JSON.parse(localStorage.getItem("category"));
-      this.bxMallSubDto = this.category[index].bxMallSubDto;
-      this.getData();
+    clicked() {
+      this.category = JSON.parse(localStorage.getItem('category'));
+      this.bxMallSubDto = this.category[this.activeKey].bxMallSubDto;
     },
-    goDetail(item) {
-      this.$router.push({
-        path: "/detail",
-        query: { id: item.id }
-      });
+    goDetail(index) {
+      this.$router.push({path:'/detail',query:{id:this.dataList[index].id}})
     }
   },
   mounted() {
@@ -171,4 +160,5 @@ export default {
 .van-sidebar-item {
   margin-top: -8px;
 }
+
 </style>

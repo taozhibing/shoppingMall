@@ -20,7 +20,7 @@
               </div>
               <div class="box4">
                 <div class="box5">
-                  <van-icon name="cart-o" @click="addShoppingCart(index)" />
+                  <van-icon name="cart-o" @click="addShoppingCart" />
                 </div>
                 <div class="text" @click="goDetail(index)">查看详情</div>
               </div>

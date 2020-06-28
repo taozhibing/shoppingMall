@@ -16,6 +16,6 @@ body {
   background: rgb(245, 245, 245);
 }
 .van-tabs__line {
-  z-index: 0 !important;
+  z-index: 0;
 }
 </style>

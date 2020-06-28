@@ -57,41 +57,51 @@
       </div>
       <div>
         <van-sticky :container="container">
-          <van-tabs title-active-color="red" v-model="active">
-            <van-tab title="商品详情">
-              <div v-html="obj.detail"></div>
-            </van-tab>
+          <van-tabs title-active-color="red">
+            <van-tab title="商品详情"></van-tab>
             <van-tab title="商品评论"></van-tab>
           </van-tabs>
         </van-sticky>
+        <div>
+          <div v-if="indexs===0">
+            <!--  商品详情 -->
+            <div v-html="obj.detail"></div>
+            <div class="null"></div>
+          </div>
+          <div v-else>
+            <!-- 商品评价 -->
+          </div>
+        </div>
       </div>
     </div>
     <div>
       <van-goods-action>
         <van-goods-action-icon icon="chat-o" text="客服" />
-        <van-goods-action-icon icon="cart-o" text="购物车" @click="toShoppingCart"/>
+        <van-goods-action-icon icon="cart-o" text="购物车" />
         <van-goods-action-button type="warning" text="加入购物车" @click="addShoppingCart" />
         <van-goods-action-button type="danger" text="立即购买" @click="buy" />
         <van-action-sheet v-model="show1" round>
           <div class="content">
-            <div class="flex-j-sb">
-              <div class="d-flex">
-                <img :src="obj.image" class="img" />
-                <van-icon name="close" class="close" @click="close" />
-                <div class="f-dir-jc">
-                  <div class="buygoods">{{obj.name}}</div>
+            <div class="van-box1">
+              <div class="van-box2">
+                <img :src="obj.image" class="img" width="100px"/>
+                <div class="van-box3">
+                  <div class="name">{{obj.name}}</div>
                   <div class="residue">剩余：{{obj.amount}}</div>
                   <div class="price">￥{{obj.present_price}}.00</div>
                 </div>
               </div>
+              <van-icon name="close" class="close" @click="close" />
             </div>
             <div class="buycount">
               <div>购买数量：</div>
               <div class="Quota">
+                每人限购50件
                 <van-stepper
                   v-model="value"
                   theme="round"
                   button-size="22"
+                  max="50"
                   disable-input
                   class="stepper"
                 />
@@ -117,7 +127,6 @@ export default {
       show: false,
       flag: false,
       index: 0,
-      active: 0,
       current: "",
       images: [],
       value: 1,
@@ -188,9 +197,6 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
-    toShoppingCart() {
-      this.$router.push("shoppingCart");
     },
     addShoppingCart() {
       this.nickname = localStorage.getItem("nickname");
@@ -335,48 +341,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.img {
-  width: 25%;
-  margin-right: 15px;
-  border: 1px solid #eeeeee;
-}
-.close {
-  font-size: 20px;
+.van-box3 {
   display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-.buygoods {
-  font-size: 15px;
-  margin-bottom: 10px;
-}
-.flex-j-sb {
-  padding: 0 15px;
-  margin: 20px 0;
-}
-.more {
-  font-size: 12px;
-  color: #999;
-}
-.buycount {
-  border-bottom: 1px solid #eeeeee;
-  border-top: 1px solid #eeeeee;
-  padding: 20px 20px 20px 10px;
-  display: flex;
-  justify-content: space-between;
-}
-.Quota {
-  color: red;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-}
-.stepper {
-  margin-left: 20px;
-}
-.van-btn {
-  margin-top: 30px;
 }
 </style>

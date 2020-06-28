@@ -20,7 +20,7 @@
               </div>
               <div class="box4">
                 <div class="box5">
-                  <van-icon name="cart-o" @click="addShoppingCart(index)" />
+                  <van-icon name="cart-o" @click="addShoppingCart" />
                 </div>
                 <div class="text" @click="goDetail(index)">查看详情</div>
               </div>
@@ -45,17 +45,14 @@ export default {
   components: {},
   data() {
     return {
-      id: "",
+      id : ''
     };
   },
   methods: {
     goDetail(index) {
-      this.$router.push({
-        path: "/detail",
-        query: { id: this.recommend[index].goodsId }
-      });
+      this.$router.push({path:'/detail',query:{id:this.recommend[index].goodsId}})
     },
-    addShoppingCart(index) {
+    addShoppingCart() {
       this.nickname = localStorage.getItem("nickname");
       if (this.nickname === "") {
         this.$dialog
@@ -69,14 +66,13 @@ export default {
       } else {
         this.$api
           .addShop({
-            id: this.recommend[index].goodsId
+            id: this.obj.id
           })
           .then(res => {
             this.$toast.success("加入购物车成功");
           })
           .catch(err => {});
       }
-    }
   },
   mounted() {
     new BScroll(this.$refs.goods, {

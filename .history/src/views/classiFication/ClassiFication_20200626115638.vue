@@ -3,16 +3,16 @@
     <div class="top">商品分类</div>
     <div class="container">
       <div>
-        <van-sidebar v-model="activeKey" @change="change">
-          <div v-for="(item,index) in category" :key="index" >
+        <van-sidebar v-model="activeKey">
+          <div v-for="(item,index) in category" :key="index" @click="clicked">
             <van-sidebar-item :title="item.mallCategoryName" />
           </div>
         </van-sidebar>
       </div>
 
       <div class="r-box">
-        <van-tabs v-model="active" @click="getData">
-          <div v-for="(item, index) in bxMallSubDto" :key="index">
+        <van-tabs v-model="active">
+          <div v-for="(item, index) in bxMallSubDto" :key="index" @click="clicked">
             <van-tab :title="item.mallSubName">
               <template>
                 <div>
@@ -20,7 +20,7 @@
                     class="r-box1"
                     v-for="(item,index) in obj"
                     :key="index"
-                    @click="goDetail(item)"
+                    @click="goDetail(index)"
                   >
                     <div class="r-box2">
                       <img :src="item.image" alt width="80px" />
@@ -55,15 +55,14 @@ export default {
       bxMallSubDto: [],
       mallCategoryName: "",
       category: [],
-      ids: "",
-      obj: [],
-      id: ""
+      id: "",
+      obj: []
     };
   },
   methods: {
-    getData() {
+    getData(id) {
       this.$api
-        .classiFication(this.ids)
+        .classiFication(this.id)
         .then(res => {
           this.obj = res.dataList;
           console.log(res);
@@ -72,17 +71,14 @@ export default {
           console.log(err);
         });
     },
-    change(index) {
-      this.active = 0;
-      this.ids = this.category[index].bxMallSubDto[this.active].mallSubId;
+    clicked() {
       this.category = JSON.parse(localStorage.getItem("category"));
-      this.bxMallSubDto = this.category[index].bxMallSubDto;
-      this.getData();
+      this.bxMallSubDto = this.category[this.activeKey].bxMallSubDto;
     },
-    goDetail(item) {
+    goDetail(index) {
       this.$router.push({
         path: "/detail",
-        query: { id: item.id }
+        query: { id: this.recommend[index].goodsId }
       });
     }
   },
@@ -93,10 +89,10 @@ export default {
 
     if (this.$route.query.index) {
       this.activeKey = this.$route.query.index;
-      this.ids = this.category[this.activeKey].bxMallSubDto[0].mallSubId;
+      this.id = this.category[this.activeKey].bxMallSubDto[0].mallSubId;
       this.getData();
     } else {
-      this.ids = this.category[0].bxMallSubDto[0].mallSubId;
+      this.id = this.category[0].bxMallSubDto[0].mallSubId;
       this.getData();
     }
   },

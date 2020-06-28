@@ -20,7 +20,7 @@
                     class="r-box1"
                     v-for="(item,index) in obj"
                     :key="index"
-                    @click="goDetail(item)"
+                    @click="goDetail(index)"
                   >
                     <div class="r-box2">
                       <img :src="item.image" alt width="80px" />
@@ -79,10 +79,11 @@ export default {
       this.bxMallSubDto = this.category[index].bxMallSubDto;
       this.getData();
     },
-    goDetail(item) {
+    goDetail(index) {
+      console.log(index);
       this.$router.push({
         path: "/detail",
-        query: { id: item.id }
+        query: { id: this.dataList[index].id }
       });
     }
   },

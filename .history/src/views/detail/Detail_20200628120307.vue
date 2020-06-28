@@ -214,9 +214,6 @@ export default {
           .catch(err => {});
       }
     },
-    close() {
-      this.show1 = false;
-    },
     buy() {
       this.show1 = true;
     }

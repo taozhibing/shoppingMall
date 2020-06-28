@@ -190,7 +190,7 @@ export default {
         });
     },
     toShoppingCart() {
-      this.$router.push("shoppingCart");
+      this.$router.push("/shoppingCart");
     },
     addShoppingCart() {
       this.nickname = localStorage.getItem("nickname");

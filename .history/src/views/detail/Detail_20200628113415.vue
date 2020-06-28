@@ -59,7 +59,7 @@
         <van-sticky :container="container">
           <van-tabs title-active-color="red" v-model="active">
             <van-tab title="商品详情">
-              <div v-html="obj.detail"></div>
+            <div v-html="obj.detail"></div>
             </van-tab>
             <van-tab title="商品评论"></van-tab>
           </van-tabs>
@@ -69,7 +69,7 @@
     <div>
       <van-goods-action>
         <van-goods-action-icon icon="chat-o" text="客服" />
-        <van-goods-action-icon icon="cart-o" text="购物车" @click="toShoppingCart"/>
+        <van-goods-action-icon icon="cart-o" text="购物车" />
         <van-goods-action-button type="warning" text="加入购物车" @click="addShoppingCart" />
         <van-goods-action-button type="danger" text="立即购买" @click="buy" />
         <van-action-sheet v-model="show1" round>
@@ -77,21 +77,23 @@
             <div class="flex-j-sb">
               <div class="d-flex">
                 <img :src="obj.image" class="img" />
-                <van-icon name="close" class="close" @click="close" />
                 <div class="f-dir-jc">
                   <div class="buygoods">{{obj.name}}</div>
                   <div class="residue">剩余：{{obj.amount}}</div>
                   <div class="price">￥{{obj.present_price}}.00</div>
                 </div>
               </div>
+              <van-icon name="close" class="close" @click="close" />
             </div>
             <div class="buycount">
               <div>购买数量：</div>
               <div class="Quota">
+                每人限购50件
                 <van-stepper
                   v-model="value"
                   theme="round"
                   button-size="22"
+                  max="50"
                   disable-input
                   class="stepper"
                 />
@@ -117,7 +119,6 @@ export default {
       show: false,
       flag: false,
       index: 0,
-      active: 0,
       current: "",
       images: [],
       value: 1,
@@ -188,9 +189,6 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
-    toShoppingCart() {
-      this.$router.push("shoppingCart");
     },
     addShoppingCart() {
       this.nickname = localStorage.getItem("nickname");
@@ -335,6 +333,15 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.van-box3 {
+  display: flex;
+}
+.index {
+  z-index: 99;
+}
+/deep/img {
+  margin-bottom: -5px;
+}
 .img {
   width: 25%;
   margin-right: 15px;
@@ -344,9 +351,6 @@ export default {
   font-size: 20px;
   display: flex;
   justify-content: flex-end;
-  position: absolute;
-  top: 10px;
-  right: 10px;
 }
 .buygoods {
   font-size: 15px;

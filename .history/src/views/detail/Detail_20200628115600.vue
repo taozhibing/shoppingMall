@@ -69,7 +69,7 @@
     <div>
       <van-goods-action>
         <van-goods-action-icon icon="chat-o" text="客服" />
-        <van-goods-action-icon icon="cart-o" text="购物车" @click="toShoppingCart"/>
+        <van-goods-action-icon icon="cart-o" text="购物车" />
         <van-goods-action-button type="warning" text="加入购物车" @click="addShoppingCart" />
         <van-goods-action-button type="danger" text="立即购买" @click="buy" />
         <van-action-sheet v-model="show1" round>
@@ -90,7 +90,6 @@
               <div class="Quota">
                 <van-stepper
                   v-model="value"
-                  theme="round"
                   button-size="22"
                   disable-input
                   class="stepper"
@@ -188,9 +187,6 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
-    toShoppingCart() {
-      this.$router.push("shoppingCart");
     },
     addShoppingCart() {
       this.nickname = localStorage.getItem("nickname");

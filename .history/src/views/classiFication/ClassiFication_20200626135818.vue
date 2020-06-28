@@ -12,7 +12,7 @@
 
       <div class="r-box">
         <van-tabs v-model="active" @click="getData">
-          <div v-for="(item, index) in bxMallSubDto" :key="index">
+          <div v-for="(item, index) in bxMallSubDto" :key="index" @click="clicked">
             <van-tab :title="item.mallSubName">
               <template>
                 <div>
@@ -20,7 +20,7 @@
                     class="r-box1"
                     v-for="(item,index) in obj"
                     :key="index"
-                    @click="goDetail(item)"
+                    @click="goDetail(index)"
                   >
                     <div class="r-box2">
                       <img :src="item.image" alt width="80px" />
@@ -79,10 +79,14 @@ export default {
       this.bxMallSubDto = this.category[index].bxMallSubDto;
       this.getData();
     },
-    goDetail(item) {
+    // clicked(index) {
+    //   this.category = JSON.parse(localStorage.getItem("category"));
+    //   this.bxMallSubDto = this.category[this.activeKey].bxMallSubDto;
+    // },
+    goDetail(index) {
       this.$router.push({
         path: "/detail",
-        query: { id: item.id }
+        query: { id: this.dataList[index].id }
       });
     }
   },

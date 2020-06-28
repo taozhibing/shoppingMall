@@ -77,7 +77,7 @@
             <div class="flex-j-sb">
               <div class="d-flex">
                 <img :src="obj.image" class="img" />
-                <van-icon name="close" class="close" @click="close" />
+                <van-icon name="close" class="close"/>
                 <div class="f-dir-jc">
                   <div class="buygoods">{{obj.name}}</div>
                   <div class="residue">剩余：{{obj.amount}}</div>
@@ -213,9 +213,6 @@ export default {
           })
           .catch(err => {});
       }
-    },
-    close() {
-      this.show1 = false;
     },
     buy() {
       this.show1 = true;
