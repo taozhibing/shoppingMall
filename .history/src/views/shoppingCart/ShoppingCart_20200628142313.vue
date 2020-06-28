@@ -28,8 +28,8 @@
           </div>
         </div>
         <div class="van-btn">
-          <van-button class="btn" @click="del" type="info">删除</van-button>
-          <van-button @click="Goto" type="primary">去结算</van-button>
+          <van-button class="btn" @click="del" color="#e6057f">删除</van-button>
+          <van-button @click="Goto" color="#e6057f">去结算</van-button>
         </div>
         <div class="item">
           <div v-for="item in shopList" :key="item.id">
@@ -41,7 +41,7 @@
               <div class="name">
                 <div>{{item.name}}</div>
                 <div class="flex-j-sb">
-                  <div class="price">￥{{item.mallPrice}}</div>
+                  <div>￥{{item.mallPrice}}</div>
                   <van-stepper
                     v-model="item.count"
                     @change="add(item)"
@@ -56,6 +56,7 @@
         </div>
       </div>
     </div>
+    <div class="zhanwei1"></div>
   </div>
 </template>
 
@@ -123,7 +124,7 @@ export default {
               this.idArr.push(item.cid);
             });
             this.$api
-              .deleteShop(this.idArr)
+              .deleteShop(idArr)
               .then(res => {
                 this.$toast.success("删除成功");
                 this.getData();
@@ -143,15 +144,15 @@ export default {
     },
     // 结算页面
     Goto() {
-      this.$router.push('/settlement');
+      this.$router.push("Settlement");
     }
   },
   mounted() {
-    this.getData();
+    this.getData()
   },
   watch: {},
   computed: {
-    // 总价
+    // 定义总价
     total() {
       let sum = 0;
       this.shopList.map(item => {
@@ -226,9 +227,9 @@ export default {
 }
 .flex-j-sb {
   margin-top: 15px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+}
+.zhanwei1 {
+  height: 50px;
 }
 .cart-item1 {
   display: flex;
@@ -253,16 +254,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(5, 84, 255);
+  color: #cccccc;
 }
 .cart-item4 {
   border: 1px solid #000;
   border-radius: 10px;
   padding: 10px 20px;
-  background: red;
-  color: #000;
-}
-.price {
-  color: red;
 }
 </style>

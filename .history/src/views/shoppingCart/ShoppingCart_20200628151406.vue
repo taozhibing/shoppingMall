@@ -143,7 +143,7 @@ export default {
     },
     // 结算页面
     Goto() {
-      this.$router.push('/settlement');
+      this.$router.push("settlement");
     }
   },
   mounted() {

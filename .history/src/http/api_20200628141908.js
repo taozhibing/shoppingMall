@@ -28,8 +28,8 @@ export default {
     })
   },
   // 购物车商品删除(6)
-  deleteShop(idArr) {
-    return service.post(`/deleteShop`,idArr )
+  deleteShop(arr) {
+    return service.post(`/deleteShop`,arr )
   },
   // 购物车支付页面(7)
   order({ address, tel, orderId, totalPrice, idDirect, count }) {

@@ -56,6 +56,7 @@
         </div>
       </div>
     </div>
+    <div class="zhanwei1"></div>
   </div>
 </template>
 
@@ -143,7 +144,7 @@ export default {
     },
     // 结算页面
     Goto() {
-      this.$router.push('/settlement');
+      this.$router.push("Settlement");
     }
   },
   mounted() {
@@ -226,9 +227,9 @@ export default {
 }
 .flex-j-sb {
   margin-top: 15px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+}
+.zhanwei1 {
+  height: 50px;
 }
 .cart-item1 {
   display: flex;

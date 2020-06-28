@@ -110,7 +110,7 @@ const routes = [
     name: 'Settlement',
     component: () => import('../views/settlement/Settlement'),
     meta: {
-      title: '结算页'
+      title: '商品详情页'
     }
   },
 ]
