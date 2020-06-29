@@ -149,7 +149,7 @@ export default {
       });
       this.$router.push({
         path: "/settlement",
-        query: { shopList: this.shopList, total: this.total, flag: this.flag }
+        query: { shopList: this.shopList, total: this.total,  }
       });
     }
   },

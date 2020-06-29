@@ -144,9 +144,6 @@ export default {
     },
     // 结算页面
     Goto() {
-      this.shopList = this.shopList.filter(item => {
-        return item.check === true;
-      });
       this.$router.push({
         path: "/settlement",
         query: { shopList: this.shopList, total: this.total, flag: this.flag }

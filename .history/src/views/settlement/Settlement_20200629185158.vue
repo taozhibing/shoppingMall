@@ -30,7 +30,7 @@
         <img src="../../assets/caitiao.jpg" width="100%" />
       </div>
       <div v-if="flag===1">
-        <div v-for="(item,index) in shopList" :key="index" class="box">
+        <div v-for="(item,index) in shopList" :key="index" class="d-flex">
           <img :src="item.image_path" class="img" />
           <div class="item">
             <div class="name">{{item.name}}</div>
@@ -84,7 +84,7 @@ export default {
       this.$router.go(-1);
     },
      setDefa() {
-      this.$router.push("/addressList");
+      this.$router.push("/addressEdits");
     },
     onSubmit() {
       if (this.flag === 1) {
@@ -130,7 +130,7 @@ export default {
   mounted() {
     this.goodsOne = this.$route.query.goodsOne;
     this.counts = this.$route.query.count;
-    this.shopList = this.$route.query.shopList;
+    this.shopList = JSON.parse(localStorage.getItem("shopList"));
     this.flag = this.$route.query.flag;
     this.flags = this.$route.query.flags;
     this.total = this.$route.query.total;

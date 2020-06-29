@@ -130,7 +130,7 @@ export default {
   mounted() {
     this.goodsOne = this.$route.query.goodsOne;
     this.counts = this.$route.query.count;
-    this.shopList = this.$route.query.shopList;
+    this.shopList = JSON.parse(localStorage.getItem("shopList"));
     this.flag = this.$route.query.flag;
     this.flags = this.$route.query.flags;
     this.total = this.$route.query.total;

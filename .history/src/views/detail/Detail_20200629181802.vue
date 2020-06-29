@@ -126,8 +126,7 @@ export default {
       id: "",
       container: null,
       indexs: 0,
-      show1: false,
-      flags: 0
+      show1: false
     };
   },
   methods: {
@@ -161,7 +160,7 @@ export default {
           .then(res => {
             // 弹框提示
             this.$toast.success(res.msg);
-            this.$utils.collectGoods(this.obj);
+            this.$utils.collectGoods(this.obj)
             this.flag = true;
           })
           .catch(err => {
@@ -222,12 +221,9 @@ export default {
     },
     buy() {
       this.show1 = true;
-    }, // 结算
+    },
     goSettlement() {
-      this.$router.push({
-        path: "/settlement",
-        query: { goodsOne: this.obj, count: this.value, flags: this.flags }
-      });
+      this.$router.push({path:'/settlement',query:{id:this.obj.id}})
     }
   },
   mounted() {
