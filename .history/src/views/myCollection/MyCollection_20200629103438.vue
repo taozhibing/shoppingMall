@@ -51,9 +51,8 @@ export default {
     goDetail(index) {
       this.$router.push({
         path: "/detail",
-        query: { id: this.arr[index].cid }
+        query: { id: this.list[index].cid }
       });
-      this.$utils.goDetail(this.arr[index])
     },
     del(index) {
       this.$api
@@ -70,6 +69,7 @@ export default {
     if (localStorage.getItem("nickname")) {
       this.nickname = localStorage.getItem("nickname");
     }
+    // this.Obj = JSON.parse(localStorage.getItem('obj'))
   },
   watch: {},
   computed: {}

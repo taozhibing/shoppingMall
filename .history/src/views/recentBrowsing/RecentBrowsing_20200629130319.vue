@@ -5,21 +5,21 @@
     </div>
     <div v-for="(item,index) in views" :key="index">
       <div v-if="item.goodsName">
-        <van-card :price="item.price" :title="item.goodsName" :thumb="item.image" @click="goDetail(item)">
+        <van-card :price="item.price" :title="item.goodsName" :thumb="item.image" @click="goDetail(index)">
           <template #footer>
             <van-icon name="close" @click="del(index)" size="20"/>
           </template>
         </van-card>
       </div>
       <div v-else-if="item.name">
-        <van-card :price="item.present_price" :title="item.name" :thumb="item.image" :origin-price="item.orl_price" @click="goDetail(item)">
+        <van-card :price="item.present_price" :title="item.name" :thumb="item.image" :origin-price="item.orl_price" @click="goDetail(index)">
           <template #footer>
             <van-icon name="close" @click="del(index)" size="20"/>
           </template>
         </van-card>
       </div>
       <div v-else>
-        <van-card :thumb="item.image" @click="goDetail(item)">
+        <van-card :thumb="item.image" @click="goDetail(index)">
           <template #footer>
             <van-icon name="close" @click="del(index)" size="20"/>
           </template>
@@ -45,14 +45,7 @@ export default {
     },
     del(index) {
 
-    },
-     goDetail(item) {
-      this.$router.push({
-        path: "/detail",
-        query: { id: item.goodsId }
-      });
-      this.$utils.goDetail(item)
-    },
+    }
   },
   mounted() {
     this.views = JSON.parse(localStorage.getItem("views"));

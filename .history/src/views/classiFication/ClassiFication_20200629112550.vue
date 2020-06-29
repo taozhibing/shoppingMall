@@ -84,7 +84,7 @@ export default {
         path: "/detail",
         query: { id: item.id }
       });
-      this.$utils.goDetail(item)
+      this.$utils.goDetail(this.obj[item])
     }
   },
   mounted() {

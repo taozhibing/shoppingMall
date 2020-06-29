@@ -8,7 +8,6 @@ import api from './http/api';
 import utils from './utils';
 
 Vue.prototype.$api = api;
-Vue.prototype.$utils = utils;
 Vue.use(Vant);
 
 Vue.config.productionTip = false

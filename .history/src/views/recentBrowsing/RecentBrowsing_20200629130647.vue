@@ -46,13 +46,13 @@ export default {
     del(index) {
 
     },
-     goDetail(item) {
-      this.$router.push({
-        path: "/detail",
-        query: { id: item.goodsId }
-      });
-      this.$utils.goDetail(item)
-    },
+    //  goDetail(item) {
+    //   this.$router.push({
+    //     path: "/detail",
+    //     query: { id: item.id }
+    //   });
+    //   this.$utils.goDetail(item)
+    // },
   },
   mounted() {
     this.views = JSON.parse(localStorage.getItem("views"));

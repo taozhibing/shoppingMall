@@ -22,7 +22,7 @@
                 <div class="box5">
                   <van-icon name="cart-o" @click="addShoppingCart(index)" />
                 </div>
-                <div class="text" @click="goDetail(index)">查看详情</div>
+                <div class="text" @click="goDetail(item,index)">查看详情</div>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@ export default {
     };
   },
   methods: {
-    goDetail(index) {
+    goDetail(item,index) {
       this.$router.push({
         path: "/detail",
         query: { id: this.recommend[index].goodsId }
