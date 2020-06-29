@@ -22,7 +22,7 @@
           <div class="total">
             <div>
               合计：
-              <span class="all">{{total | fixed}}</span>
+              <span class="all">{{value | fixed}}</span>
             </div>
             <div class="confirm">请确认订单</div>
           </div>
@@ -163,8 +163,8 @@ export default {
     }
   },
   filters: {
-    fixed(total) {
-      return "￥" + Number(total).toFixed(2);
+    fixed(value) {
+      return "￥" + Number(value).toFixed(2);
     }
   }
 };

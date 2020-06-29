@@ -69,7 +69,7 @@
     <div>
       <van-goods-action>
         <van-goods-action-icon icon="chat-o" text="客服" />
-        <van-goods-action-icon icon="cart-o" text="购物车" @click="toShoppingCart" />
+        <van-goods-action-icon icon="cart-o" text="购物车" @click="toShoppingCart"/>
         <van-goods-action-button type="warning" text="加入购物车" @click="addShoppingCart" />
         <van-goods-action-button type="danger" text="立即购买" @click="buy" />
         <van-action-sheet v-model="show1" round>
@@ -142,7 +142,7 @@ export default {
     // 查看商品是否已收藏
     getisCollection() {
       this.$api
-        .isCollection({ id: this.id })
+        .isCollection({ id: this.obj._id })
         .then(res => {
           // 将收藏与否的结果 赋值给 收藏与否标识
           this.isCollect = res.isCollection;
@@ -160,7 +160,6 @@ export default {
           .then(res => {
             // 弹框提示
             this.$toast.success(res.msg);
-            // localStorage.setItem('obj',JSON.stringify(this.obj))
             this.flag = true;
           })
           .catch(err => {
@@ -180,12 +179,11 @@ export default {
     // 取消收藏
     cancelCollect() {
       this.$api
-        .cancelCollection({ id: this.id })
+        .cancelCollection({id:this.id})
         .then(res => {
           // 弹框提示
           this.$toast.success(res.msg);
           this.flag = false;
-          this.getisCollection();
         })
         .catch(err => {
           console.log(err);
@@ -224,16 +222,17 @@ export default {
     }
   },
   mounted() {
+    this.getisCollection();
     this.nickname = localStorage.getItem("nickname");
     this.ids = this.$route.query.id;
     this.$api
       .oneGoods(this.ids)
       .then(res => {
         this.obj = res.goods.goodsOne;
-        this.id = res.goods.goodsOne.id;
+        this.id = res.goods.goodsOne.id
         this.images.push(this.obj.image);
         this.images.push(this.obj.image_path);
-        this.getisCollection();
+        console.log(res);
       })
       .catch(err => {
         console.log(err);

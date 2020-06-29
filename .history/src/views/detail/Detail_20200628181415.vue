@@ -185,7 +185,6 @@ export default {
           // 弹框提示
           this.$toast.success(res.msg);
           this.flag = false;
-          this.getisCollection();
         })
         .catch(err => {
           console.log(err);

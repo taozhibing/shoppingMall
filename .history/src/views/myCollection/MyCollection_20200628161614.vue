@@ -1,0 +1,34 @@
+<template>
+  <div>
+    <div>
+      <van-nav-bar title="我的收藏" fixed:true left-arrow @click-left="onClickLeft" />
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "MyCollection",
+  props: {},
+  components: {},
+  data() {
+    return {};
+  },
+  methods: {},
+  mounted() {},
+  watch: {},
+  computed: {}
+};
+</script>
+
+<style scoped lang='scss'>
+.top {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffff;
+  border-bottom: 1px solid #eee;
+}
+</style>

@@ -109,7 +109,7 @@ export default {
   },
   methods: {
     allOrder() {
-      this.$router.push('/myOrder')
+      this.$router.push('')
     },
     collectionList() {
       this.$router.push('/myCollection')

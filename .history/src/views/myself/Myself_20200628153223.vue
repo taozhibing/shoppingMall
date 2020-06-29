@@ -66,7 +66,7 @@
             <div>收藏商品</div>
           </div>
           <div @click="collectionList">
-            <van-icon name="arrow" size="20"/>
+            <van-icon name="arrow" size="20" />
           </div>
         </div>
          <div class="foot-box">
@@ -109,10 +109,10 @@ export default {
   },
   methods: {
     allOrder() {
-      this.$router.push('/myOrder')
+      this.$router.push('')
     },
     collectionList() {
-      this.$router.push('/myCollection')
+      this.$router.push('')
     },
     allAddress() {
       this.$router.push('/addressList')

@@ -134,7 +134,7 @@ const routes = [
     name: 'MyOrder',
     component: () => import('../views/myOrder/MyOrder'),
     meta: {
-      title: '我的订单页'
+      title: '我的收藏页'
     }
   },
 ]

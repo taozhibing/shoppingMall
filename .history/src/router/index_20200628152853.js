@@ -121,22 +121,6 @@ const routes = [
       title: '最近浏览页'
     }
   },
-  {
-    path: '/myCollection',
-    name: 'MyCollection',
-    component: () => import('../views/myCollection/MyCollection'),
-    meta: {
-      title: '我的收藏页'
-    }
-  },
-  {
-    path: '/myOrder',
-    name: 'MyOrder',
-    component: () => import('../views/myOrder/MyOrder'),
-    meta: {
-      title: '我的订单页'
-    }
-  },
 ]
 
 const router = new VueRouter({

@@ -163,8 +163,8 @@ export default {
     }
   },
   filters: {
-    fixed(total) {
-      return "￥" + Number(total).toFixed(2);
+    fixed(value) {
+      return "￥" + Number(value).toFixed(2);
     }
   }
 };
