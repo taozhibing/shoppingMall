@@ -119,6 +119,10 @@ export default {
       .catch(err => {
         console.log(err);
       });
+    //  接受来自我的页面的activeName 进入相应子页面
+    if (this.$route.query.activeName) {
+      this.activeName = this.$route.query.activeName;
+    }
   },
   watch: {},
   computed: {}

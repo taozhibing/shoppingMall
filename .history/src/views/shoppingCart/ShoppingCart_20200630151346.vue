@@ -79,8 +79,6 @@ export default {
         .getCard()
         .then(res => {
           this.shopList = res.shopList;
-          let num = this.shopList.length
-          this.$store.commit('setNumber',num)
           console.log(res);
         })
         .catch(err => {
@@ -112,9 +110,9 @@ export default {
     },
     // 删除
     del() {
-      this.ass = this.shopList.filter(item => {
-        return item.check === true;
-      });
+      // this.ass = this.shopList.filter(item => {
+      //   return item.check === true;
+      // });
       if (this.ass.length > 0) {
         this.$dialog
           .confirm({
@@ -169,9 +167,6 @@ export default {
         }
       });
       return sum;
-    },
-    setNumber() {
-      return this.$store.state.num
     }
   },
   filters: {

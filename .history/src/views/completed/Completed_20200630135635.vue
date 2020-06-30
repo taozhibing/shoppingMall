@@ -5,7 +5,7 @@
     </div>
     <div>
       <!-- 订单信息 -->
-      <van-tabs v-model="activeName" sticky :swipe-threshold="5">
+      <van-tabs v-model="activeName" sticky :swipe-threshold="swipe">
         <div>
           <!-- 全部页面 -->
           <van-tab title="全部" name="a">
@@ -92,7 +92,8 @@ export default {
       // 默认第一项
       activeName: "a",
       // 订单列表
-      orderlist: []
+      orderlist: [],
+      swipe: 5
     };
   },
   methods: {
@@ -119,6 +120,10 @@ export default {
       .catch(err => {
         console.log(err);
       });
+    //  接受来自我的页面的activeName 进入相应子页面
+    if (this.$route.query.activeName) {
+      this.activeName = this.$route.query.activeName;
+    }
   },
   watch: {},
   computed: {}

@@ -80,7 +80,7 @@ export default {
         .then(res => {
           this.shopList = res.shopList;
           let num = this.shopList.length
-          this.$store.commit('setNumber',num)
+          this.num.$
           console.log(res);
         })
         .catch(err => {

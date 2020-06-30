@@ -9,7 +9,7 @@
         show-delete
         show-set-default
         show-search-result
-        :address-info="obj"
+        :address-info='obj'
         :area-columns-placeholder="['请选择', '请选择', '请选择']"
         @save="onSave"
         @delete="onDelete"
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       area: area,
-      obj: {}
+      obj : {}
     };
   },
   methods: {
@@ -56,27 +56,24 @@ export default {
           console.log(err);
         });
       this.$toast("保存成功");
-      this.$router.push("/addressList");
+      this.$router.push('/addressList')
     },
     // 删除
     onDelete(id) {
-      this.$api
-        .deleteAddress({ id })
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      this.$api.deleteAddress({id}).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      })
       this.$toast("删除成功");
-      this.$router.push("/addressList");
+      this.$router.push('/addressList')
     }
   },
   mounted() {
-    this.obj = JSON.parse(this.$route.query.obj);
+    this.obj = JSON.parse(this.$route.query.obj)
   },
   watch: {},
-  computed: {}
+  computed: { }
 };
 </script>
 

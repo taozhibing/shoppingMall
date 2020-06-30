@@ -79,8 +79,6 @@ export default {
         .getCard()
         .then(res => {
           this.shopList = res.shopList;
-          let num = this.shopList.length
-          this.$store.commit('setNumber',num)
           console.log(res);
         })
         .catch(err => {
@@ -157,6 +155,7 @@ export default {
   },
   mounted() {
     this.getData();
+    localStorage.setItem('num',this.shopList.length)
   },
   watch: {},
   computed: {
@@ -169,9 +168,6 @@ export default {
         }
       });
       return sum;
-    },
-    setNumber() {
-      return this.$store.state.num
     }
   },
   filters: {

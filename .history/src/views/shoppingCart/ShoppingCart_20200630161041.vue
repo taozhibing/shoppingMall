@@ -80,7 +80,6 @@ export default {
         .then(res => {
           this.shopList = res.shopList;
           let num = this.shopList.length
-          this.$store.commit('setNumber',num)
           console.log(res);
         })
         .catch(err => {
@@ -170,9 +169,6 @@ export default {
       });
       return sum;
     },
-    setNumber() {
-      return this.$store.state.num
-    }
   },
   filters: {
     fixed(total) {

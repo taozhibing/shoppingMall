@@ -80,7 +80,7 @@ export default {
         .then(res => {
           this.shopList = res.shopList;
           let num = this.shopList.length
-          this.$store.commit('setNumber',num)
+          localStorage.setItem('num',num)
           console.log(res);
         })
         .catch(err => {
@@ -170,15 +170,15 @@ export default {
       });
       return sum;
     },
+    filters: {
+    fixed(total) {
+      return "￥" + Number(total).toFixed(2);
+    }
+  },
     setNumber() {
       return this.$store.state.num
     }
   },
-  filters: {
-    fixed(total) {
-      return "￥" + Number(total).toFixed(2);
-    }
-  }
 };
 </script>
 

@@ -70,7 +70,8 @@ export default {
       checkAll: false,
       idArr: [],
       ass: [],
-      flag: 1
+      flag: 1,
+      num :''
     };
   },
   methods: {
@@ -79,8 +80,8 @@ export default {
         .getCard()
         .then(res => {
           this.shopList = res.shopList;
-          let num = this.shopList.length
-          this.$store.commit('setNumber',num)
+          this.num = this.shopList.length
+          localStorage.setItem('num'.this.num)
           console.log(res);
         })
         .catch(err => {
@@ -169,9 +170,6 @@ export default {
         }
       });
       return sum;
-    },
-    setNumber() {
-      return this.$store.state.num
     }
   },
   filters: {
