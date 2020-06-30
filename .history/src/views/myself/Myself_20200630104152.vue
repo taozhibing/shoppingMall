@@ -110,7 +110,7 @@ export default {
   methods: {
     //已完成
     completed() {
-      this.$router.push('/completed')
+      this.$router.push('/com')
     },
     // 全部订单
     allOrder() {

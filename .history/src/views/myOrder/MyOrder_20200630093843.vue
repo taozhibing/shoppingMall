@@ -13,7 +13,7 @@ export default {
   components: {},
   data() {
     return {
-      orderlist: [],
+      list : []
     };
   },
   methods: {
@@ -24,7 +24,7 @@ export default {
   mounted() {
     // 获取所有订单
     this.$api.getMyOrder().then(res => {
-      this.orderlist = res.list
+      this.list = res.list
       console.log(res);
     }).catch(err => {
       console.log(err);

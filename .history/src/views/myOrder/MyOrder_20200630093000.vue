@@ -12,9 +12,7 @@ export default {
   props: {},
   components: {},
   data() {
-    return {
-      orderlist: [],
-    };
+    return {};
   },
   methods: {
     onClickLeft() {
@@ -22,13 +20,7 @@ export default {
     }
   },
   mounted() {
-    // 获取所有订单
-    this.$api.getMyOrder().then(res => {
-      this.orderlist = res.list
-      console.log(res);
-    }).catch(err => {
-      console.log(err);
-    })
+    this.$api.getMyOrder().then().catch()
   },
   watch: {},
   computed: {}

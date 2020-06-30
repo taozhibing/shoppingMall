@@ -13,7 +13,7 @@ export default {
   components: {},
   data() {
     return {
-      orderlist: [],
+      list : []
     };
   },
   methods: {

@@ -13,7 +13,7 @@
             <div class="custom-indicator" slot="indicator">{{ index + 1 }}/{{images.length}}</div>
           </van-swipe-item>
         </van-swipe>
-        <van-image-preview v-model="show" :images="images" @change="onChange" closeable: false>
+        <!-- <van-image-preview v-model="show" :images="images" @change="onChange" closeable: false>
           <template v-slot:index>第{{ index }}页</template>
         </van-image-preview>-->
       </div>
@@ -192,7 +192,6 @@ export default {
           console.log(err);
         });
     },
-    // 跳转到购物车
     toShoppingCart() {
       this.$router.push("shoppingCart");
     },

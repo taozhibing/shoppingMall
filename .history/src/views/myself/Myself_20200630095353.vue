@@ -43,7 +43,7 @@
           <div class="tab">
             <van-icon name="points" size="30" />
           </div>
-          <div @click="completed">已完成</div>
+          <div>已完成</div>
         </div>
       </div>
       <div class="foot">
@@ -108,31 +108,21 @@ export default {
     };
   },
   methods: {
-    //已完成
-    completed() {
-      this.$router.push('/completed')
-    },
-    // 全部订单
     allOrder() {
       this.$router.push('/myOrder')
     },
-    // 我的收藏
     collectionList() {
       this.$router.push('/myCollection')
     },
-    // 地址管理
     allAddress() {
       this.$router.push('/addressList')
     },
-    // 最近浏览
     allRecent() {
       this.$router.push('/recentBrowsing')
     },
-    // 个人资料
     profile() {
       this.$router.push('/profile')
     },
-    // 退出登录
     logout() {
       this.$api.loginOut({ }).then(res => {
         this.flag = false
@@ -143,7 +133,6 @@ export default {
         console.log(err);
       })
     },
-    // 跳转登录页
     login() {
       this.$router.push('/login')
     }

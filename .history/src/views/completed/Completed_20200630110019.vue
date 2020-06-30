@@ -3,33 +3,24 @@
     <div>
       <van-nav-bar title="我的订单" fixed:true left-arrow @click-left="onClickLeft" />
     </div>
+    
   </div>
 </template>
 
 <script>
 export default {
-  name: "MyOrder",
+  name: "Completed",
   props: {},
   components: {},
   data() {
-    return {
-      orderlist: [],
-    };
+    return {};
   },
   methods: {
     onClickLeft() {
       this.$router.go(-1);
     }
   },
-  mounted() {
-    // 获取所有订单
-    this.$api.getMyOrder().then(res => {
-      this.orderlist = res.list
-      console.log(res);
-    }).catch(err => {
-      console.log(err);
-    })
-  },
+  mounted() {},
   watch: {},
   computed: {}
 };

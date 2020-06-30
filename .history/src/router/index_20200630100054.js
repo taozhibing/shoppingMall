@@ -142,7 +142,7 @@ const routes = [
     name: 'Completed',
     component: () => import('../views/completed/Completed'),
     meta: {
-      title: '已完成页'
+      title: '我的订单页'
     }
   },
 ]
