@@ -4,10 +4,7 @@
       <van-nav-bar title="我的订单" fixed:true left-arrow @click-left="onClickLeft" />
     </div>
     <div>
-      <!-- 订单信息 -->
-      <van-tabs v-model="activeName" sticky :swipe-threshold="swipe">
         <div>
-          <!-- 全部页面 -->
           <van-tab title="全部" name="a">
             <!-- 如果没有订单信息 显示暂无订单数据 -->
             <div class="coming-soon" v-if="orderlist.length < 1">暂无订单数据</div>
@@ -78,7 +75,6 @@
             </div>
           </van-tab>
         </div>
-      </van-tabs>
     </div>
   </div>
 </template>

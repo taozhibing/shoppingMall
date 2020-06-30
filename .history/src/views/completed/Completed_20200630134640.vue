@@ -5,7 +5,7 @@
     </div>
     <div>
       <!-- 订单信息 -->
-      <van-tabs v-model="activeName" sticky :swipe-threshold="swipe">
+      <van-tabs v-model="activeName" sticky>
         <div>
           <!-- 全部页面 -->
           <van-tab title="全部" name="a">
@@ -94,7 +94,6 @@ export default {
       activeName: "a",
       // 订单列表
       orderlist: [],
-      swipe: 5
     };
   },
   methods: {
