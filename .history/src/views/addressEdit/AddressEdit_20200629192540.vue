@@ -58,7 +58,6 @@ export default {
       this.$toast("保存成功");
       this.$router.push('/addressList')
     },
-    // 删除
     onDelete(id) {
       this.$api.deleteAddress({id}).then(res => {
         console.log(res);
