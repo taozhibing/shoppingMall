@@ -11,7 +11,7 @@
           <div class="cart-item4">去购物</div>
         </div>
       </div>
-      <div v-else class="content">
+      <div v-else>
         <div class="chose">
           <div v-if="checkAll===false">
             <van-checkbox v-model="checkAll" @click="checkedAll">全选</van-checkbox>
@@ -205,11 +205,6 @@ export default {
   left: 0;
   z-index: 999;
 }
-.content {
-  width: 100%;
-  height: 100%;
-  margin-top: 40px;
-}
 .chose {
   padding: 10px;
   border-bottom: 1px solid #eee;
@@ -217,6 +212,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 40px;
 }
 .total {
   width: 140px;

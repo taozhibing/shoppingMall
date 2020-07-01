@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div>
       <div class="top">购物车</div>
       <div v-if="shopList.length <= 0">
         <div class="cart-item1">
@@ -11,7 +11,7 @@
           <div class="cart-item4">去购物</div>
         </div>
       </div>
-      <div v-else class="content">
+      <div v-else>
         <div class="chose">
           <div v-if="checkAll===false">
             <van-checkbox v-model="checkAll" @click="checkedAll">全选</van-checkbox>
@@ -29,7 +29,7 @@
         </div>
         <div class="van-btn">
           <van-button class="btn" @click="del" type="info">删除</van-button>
-          <van-button @click="goSettlement" type="primary">去结算</van-button>
+          <van-button @click="Goto" type="primary">去结算</van-button>
         </div>
         <div class="item">
           <div v-for="item in shopList" :key="item.id">
@@ -70,7 +70,7 @@ export default {
       checkAll: false,
       idArr: [],
       ass: [],
-      flag: "1"
+      flag: 1
     };
   },
   methods: {
@@ -79,8 +79,8 @@ export default {
         .getCard()
         .then(res => {
           this.shopList = res.shopList;
-          let num = this.shopList.length;
-          this.$store.commit("setNumber", num);
+          let num = this.shopList.length
+          this.$store.commit('setNumber',num)
           console.log(res);
         })
         .catch(err => {
@@ -145,19 +145,15 @@ export default {
       this.$router.push("/");
     },
     // 结算页面
-    goSettlement() {
+    Goto() {
       this.shopList = this.shopList.filter(item => {
         return item.check === true;
       });
       this.$router.push({
         path: "/settlement",
-        query: {
-          shopList: JSON.stringify(this.shopList),
-          total: this.total,
-          flag: this.flag
-        }
+        query: { shopList: this.shopList, total: this.total, flag: this.flag }
       });
-      localStorage.setItem("shopList", JSON.stringify(this.shopList));
+      localStorage.setItem('arr',JSON.stringify(this.shopList))
     }
   },
   mounted() {
@@ -176,7 +172,7 @@ export default {
       return sum;
     },
     setNumber() {
-      return this.$store.state.num;
+      return this.$store.state.num
     }
   },
   filters: {
@@ -188,10 +184,6 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-.container {
-  width: 100%;
-  height: 100%;
-}
 .top {
   width: 100%;
   height: 40px;
@@ -200,15 +192,6 @@ export default {
   align-items: center;
   background: #ffff;
   border-bottom: 1px solid #eee;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-}
-.content {
-  width: 100%;
-  height: 100%;
-  margin-top: 40px;
 }
 .chose {
   padding: 10px;
@@ -294,8 +277,5 @@ export default {
 }
 .price {
   color: red;
-}
-.item[data-v-5ac9b2a5] {
-  margin-bottom: 60px;
 }
 </style>

@@ -224,7 +224,7 @@ export default {
     },
     buy() {
       this.show1 = true;
-    }, // 去结算
+    }, // 结算
     goSettlement() {
       this.$router.push({
         path: "/settlement",

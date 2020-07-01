@@ -92,7 +92,6 @@ export default {
     },
     // 提交订单
     onSubmit() {
-      // 购物车传过来
       if (this.flag === "1") {
         this.shopList.map(item => {
           this.arr.push(item.cid);
@@ -113,7 +112,6 @@ export default {
           })
           .catch(err => {});
       }
-      // 详情页传过来
       if (this.flags === "0") {
         this.arr.push(this.goodsOne.id);
         this.$api

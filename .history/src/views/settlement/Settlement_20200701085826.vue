@@ -31,7 +31,6 @@
       <div class="caitiao">
         <img src="../../assets/caitiao.jpg" width="100%" />
       </div>
-      <!--购物车页跳转结算过来-->>
       <div v-if="flag==='1'">
         <div v-for="(item,index) in shopList" :key="index" class="box">
           <img :src="item.image_path" class="img" />
@@ -47,8 +46,7 @@
           <van-submit-bar :price="this.total*100" button-text="提交订单" @submit="onSubmit" />
         </div>
       </div>
-      <!--详情页跳转结算过来-->>
-      <div v-if="flags==='0'" class="box">
+      <div v-if="flags==='0'" class="d-flex">
         <img :src="this.goodsOne.image_path" class="img" />
         <div class="item">
           <div class="name">{{this.goodsOne.name}}</div>
@@ -92,7 +90,6 @@ export default {
     },
     // 提交订单
     onSubmit() {
-      // 购物车传过来
       if (this.flag === "1") {
         this.shopList.map(item => {
           this.arr.push(item.cid);
@@ -113,7 +110,6 @@ export default {
           })
           .catch(err => {});
       }
-      // 详情页传过来
       if (this.flags === "0") {
         this.arr.push(this.goodsOne.id);
         this.$api

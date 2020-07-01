@@ -5,7 +5,7 @@
       <search></search>
     </div>
     <br />
-    <van-pull-refresh v-model="isLoading" @refresh="onRefresh" success-text="刷新成功">
+    <van-pull-refresh v-model="isLoading" @refresh="onRefresh"  success-text="刷新成功">
       <swipeltem :obj="obj"></swipeltem>
       <category :category="category"></category>
       <advertesPicture :advertesPicture="advertesPicture"></advertesPicture>
@@ -55,14 +55,14 @@ export default {
       floor2: [],
       floor3: [],
       hotGoods: [],
-      isLoading: false
+      isLoading: false,
     };
   },
   methods: {
     onRefresh() {
       setTimeout(() => {
         this.isLoading = false;
-      }, 1000);
+      },1000);
     }
   },
   mounted() {
@@ -71,7 +71,7 @@ export default {
       .then(res => {
         this.obj = res.data.slides;
         this.category = res.data.category;
-        localStorage.setItem("category", JSON.stringify(this.category));
+        localStorage.setItem('category',JSON.stringify(this.category))
         this.advertesPicture = res.data.advertesPicture;
         this.recommend = res.data.recommend;
         this.floor1 = res.data.floor1;
@@ -83,17 +83,17 @@ export default {
       .catch(err => {
         console.log(err);
       });
-    this.$api
-      .getCard()
-      .then(res => {
-        this.shopList = res.shopList;
-        let num = this.shopList.length;
-        this.$store.commit("setNumber", num);
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+       this.$api
+        .getCard()
+        .then(res => {
+          this.shopList = res.shopList;
+          let num = this.shopList.length
+          this.$store.commit('setNumber',num)
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
   },
   watch: {},
   computed: {}

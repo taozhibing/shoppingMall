@@ -206,8 +206,6 @@ export default {
   z-index: 999;
 }
 .content {
-  width: 100%;
-  height: 100%;
   margin-top: 40px;
 }
 .chose {

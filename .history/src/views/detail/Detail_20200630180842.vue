@@ -224,13 +224,12 @@ export default {
     },
     buy() {
       this.show1 = true;
-    }, // 去结算
+    }, // 结算
     goSettlement() {
       this.$router.push({
         path: "/settlement",
-        query: { goodsOne: JSON.stringify(this.obj), count: this.value, flags: this.flags }
+        query: { goodsOne: this.obj, count: this.value, flags: this.flags }
       });
-      localStorage.setItem('goodsOne',JSON.stringify(this.obj))
     }
   },
   mounted() {
