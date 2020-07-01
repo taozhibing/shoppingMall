@@ -158,7 +158,7 @@ const routes = [
     name: 'Searched',
     component: () => import('../views/searched/Searched'),
     meta: {
-      title: '商品搜索页'
+      title: '模糊搜索页'
     }
   },
 ]

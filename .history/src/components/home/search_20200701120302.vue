@@ -23,7 +23,6 @@ export default {
   methods: {
     goSearched() {
       this.$router.push({path:'/searched',query:{value:this.value}})
-      
     }
   },
   mounted() {},

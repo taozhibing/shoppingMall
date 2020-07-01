@@ -26,16 +26,16 @@ export default {
       localStorage.setItem('collect',JSON.stringify(ass))
     }
   },
-  getSearch(item) {
-    // 判断本地有没有搜索的数组
-    if(!localStorage.value) {
-      let add = []
-      add.push(item)
-      localStorage.setItem('value',JSON.stringify(add))
+  collectGoods(item) {
+    // 判断本地有没有收藏的数组
+    if(!localStorage.collect) {
+      let ass = []
+      ass.push(item)
+      localStorage.setItem('collect',JSON.stringify(ass))
     } else {
-      let add = JSON.parse(localStorage.value)
-      add.push(item)
-      localStorage.setItem('value',JSON.stringify(add))
+      let ass = JSON.parse(localStorage.collect)
+      ass.push(item)
+      localStorage.setItem('collect',JSON.stringify(ass))
     }
   }
 }
