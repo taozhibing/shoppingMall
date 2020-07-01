@@ -146,11 +146,11 @@ const routes = [
     }
   },
   {
-    path: '/estimate',
-    name: 'Estimate',
-    component: () => import('../views/estimate/Estimate'),
+    path: '/completed',
+    name: 'Completed',
+    component: () => import('../views/completed/Completed'),
     meta: {
-      title: '评价页'
+      title: '已完成页'
     }
   },
 ]
