@@ -87,11 +87,11 @@ export default {
           console.log(err);
         });
     },
-    gotoRate(val) {
+    gotorate(val) {
       this.$router.push({ name: "rate", query: { rategoods: val } });
     },
-    gotoSee(val) {
-      this.$router.push({ name: "see", query: { ratesid: val._id } });
+    gotosee(val) {
+      this.$router.push({ name: "seeeval", query: { ratesid: val._id } });
     },
     // 待评价
     tobeEvaluated() {

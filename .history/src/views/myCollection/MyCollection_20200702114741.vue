@@ -85,9 +85,8 @@ export default {
           this.collect = JSON.parse(localStorage.getItem("collect"));
           this.collect.splice(index, 1);
           localStorage.setItem("collect", JSON.stringify(this.collect));
-          // 取消收藏请求
           this.$api
-            .cancelCollection({ id: item.id })
+            .cancelCollection({ id: this.id })
             .then(res => {
               console.log(res);
             })

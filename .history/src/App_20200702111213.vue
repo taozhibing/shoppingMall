@@ -24,6 +24,7 @@ body {
 .Evaluate-options van-cell {
   display: flex;
   align-content: center;
-  justify-content: center !important;
+  justify-content: center;
+  justify-content: center;
 }
 </style>

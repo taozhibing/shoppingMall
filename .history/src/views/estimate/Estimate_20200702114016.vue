@@ -87,11 +87,11 @@ export default {
           console.log(err);
         });
     },
-    gotoRate(val) {
+    gotorate(val) {
       this.$router.push({ name: "rate", query: { rategoods: val } });
     },
-    gotoSee(val) {
-      this.$router.push({ name: "see", query: { ratesid: val._id } });
+    gotosee(val) {
+      this.$router.push({ name: "seeeval", query: { ratesid: val._id } });
     },
     // 待评价
     tobeEvaluated() {
@@ -104,15 +104,6 @@ export default {
           .catch(err => {
             console.log(err);
           });
-      } else {
-        this.$dialog
-          .confirm({
-            message: "您还没有登录，是否要登录？"
-          })
-          .then(res => {
-            this.$router.push("/login");
-          })
-          .catch(() => {});
       }
     }
   },

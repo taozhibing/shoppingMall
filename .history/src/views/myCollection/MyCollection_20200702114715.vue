@@ -85,17 +85,16 @@ export default {
           this.collect = JSON.parse(localStorage.getItem("collect"));
           this.collect.splice(index, 1);
           localStorage.setItem("collect", JSON.stringify(this.collect));
-          // 取消收藏请求
-          this.$api
-            .cancelCollection({ id: item.id })
-            .then(res => {
-              console.log(res);
-            })
-            .catch(err => {
-              console.log(err);
-            });
         })
         .catch(() => {});
+      this.$api
+        .cancelCollection({ id: this.id })
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     // 点击搜索出来的商品 前往商品详情页
     goDetail(item) {

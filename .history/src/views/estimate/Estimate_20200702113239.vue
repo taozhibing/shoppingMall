@@ -27,7 +27,7 @@
               <div v-for="item in tobeEvaluat" :key="item.id">
                 <van-card :title="item.name" :thumb="item.image_path" class="item-split">
                   <div slot="footer" class="cartitem-footer">
-                    <van-button type="primary" plain round size="small" @click="gotorate(item)">
+                    <van-button type="primary" plain round size="mini" @click="gotorate(item)">
                       <van-icon name="chat-o" />评价晒单
                     </van-button>
                   </div>
@@ -87,11 +87,11 @@ export default {
           console.log(err);
         });
     },
-    gotoRate(val) {
+    gotorate(val) {
       this.$router.push({ name: "rate", query: { rategoods: val } });
     },
-    gotoSee(val) {
-      this.$router.push({ name: "see", query: { ratesid: val._id } });
+    gotosee(val) {
+      this.$router.push({ name: "seeeval", query: { ratesid: val._id } });
     },
     // 待评价
     tobeEvaluated() {
@@ -104,15 +104,6 @@ export default {
           .catch(err => {
             console.log(err);
           });
-      } else {
-        this.$dialog
-          .confirm({
-            message: "您还没有登录，是否要登录？"
-          })
-          .then(res => {
-            this.$router.push("/login");
-          })
-          .catch(() => {});
       }
     }
   },
@@ -147,8 +138,7 @@ img {
 }
 .container {
   position: absolute;
-  top: 210px;
-  width: 100%;
+  top: 200px;
 }
 .evaluate-bg {
   width: 100%;

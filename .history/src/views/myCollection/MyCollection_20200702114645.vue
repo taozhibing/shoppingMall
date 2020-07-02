@@ -60,8 +60,8 @@
 </template>
 
 <script>
-import uniqWith from "lodash/uniqWith";
-import isEqual from "lodash/isEqual";
+import uniqWith from 'lodash/uniqWith';
+import isEqual from 'lodash/isEqual';
 export default {
   name: "MyCollection",
   props: {},
@@ -85,17 +85,19 @@ export default {
           this.collect = JSON.parse(localStorage.getItem("collect"));
           this.collect.splice(index, 1);
           localStorage.setItem("collect", JSON.stringify(this.collect));
-          // 取消收藏请求
-          this.$api
-            .cancelCollection({ id: item.id })
-            .then(res => {
-              console.log(res);
-            })
-            .catch(err => {
-              console.log(err);
-            });
         })
         .catch(() => {});
+        this.$api
+        .cancelCollection({ id: this.id })
+        .then(res => {
+          // 弹框提示
+          this.$toast.success(res.msg);
+          this.flag = false;
+          this.getisCollection();
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     // 点击搜索出来的商品 前往商品详情页
     goDetail(item) {
@@ -118,7 +120,7 @@ export default {
       this.nickname = localStorage.getItem("nickname");
     }
     this.collect = JSON.parse(localStorage.getItem("collect"));
-    this.collect = uniqWith(this.collect, isEqual);
+    this.collect = uniqWith(this.collect,isEqual)
     console.log(this.collect);
   },
   watch: {},

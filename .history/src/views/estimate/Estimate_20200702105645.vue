@@ -1,24 +1,20 @@
 <template>
   <div>
-    <div class="box">
-      <div class="top">
-        <van-nav-bar title="评价中心" fixed:true left-arrow @click-left="onClickLeft" />
-      </div>
-      <div class="img">
-        <img src="../../assets/evaluate.jpg" alt />
-      </div>
-      <div class="container">
-        <div class="evaluate-bg">
-          <div class="evaluate-bgs">
-            <!-- 按钮选项 -->
-            <van-cell class="Evaluate-options">
-              <van-tabs v-model="activeName">
-                <van-tab title="待评价" name="a"></van-tab>
-                <van-tab title="已评价" name="b"></van-tab>
-              </van-tabs>
-            </van-cell>
-          </div>
-        </div>
+    <div class="top">
+      <van-nav-bar title="评价中心" fixed:true left-arrow @click-left="onClickLeft" />
+    </div>
+    <div class="img">
+      <img src="../../assets/evaluate.jpg" alt />
+    </div>
+    <div class="evaluate-bg">
+      <div>
+        <!-- 按钮选项 -->
+        <van-cell class="Evaluate-options">
+          <van-tabs v-model="activeName">
+            <van-tab title="待评价" name="a"></van-tab>
+            <van-tab title="已评价" name="b"></van-tab>
+          </van-tabs>
+        </van-cell>
         <div class="bg">
           <!-- 待评价页面 -->
           <div v-if="activeName === 'a'">
@@ -27,7 +23,7 @@
               <div v-for="item in tobeEvaluat" :key="item.id">
                 <van-card :title="item.name" :thumb="item.image_path" class="item-split">
                   <div slot="footer" class="cartitem-footer">
-                    <van-button type="primary" plain round size="small" @click="gotorate(item)">
+                    <van-button type="primary" plain round size="mini" @click="gotorate(item)">
                       <van-icon name="chat-o" />评价晒单
                     </van-button>
                   </div>
@@ -87,11 +83,11 @@ export default {
           console.log(err);
         });
     },
-    gotoRate(val) {
+    gotorate(val) {
       this.$router.push({ name: "rate", query: { rategoods: val } });
     },
-    gotoSee(val) {
-      this.$router.push({ name: "see", query: { ratesid: val._id } });
+    gotosee(val) {
+      this.$router.push({ name: "seeeval", query: { ratesid: val._id } });
     },
     // 待评价
     tobeEvaluated() {
@@ -104,15 +100,6 @@ export default {
           .catch(err => {
             console.log(err);
           });
-      } else {
-        this.$dialog
-          .confirm({
-            message: "您还没有登录，是否要登录？"
-          })
-          .then(res => {
-            this.$router.push("/login");
-          })
-          .catch(() => {});
       }
     }
   },
@@ -126,11 +113,6 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-.box {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
 .top {
   width: 100%;
   height: 40px;
@@ -145,31 +127,13 @@ img {
   width: 100%;
   height: 100%;
 }
-.container {
-  position: absolute;
-  top: 210px;
-  width: 100%;
-}
-.evaluate-bg {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.evaluate-bgs {
-  width: 95%;
-  height: 95%;
-  display: flex;
-  justify-content: center;
-}
 .Evaluate-options {
   width: 90%;
   line-height: 30px;
   border-radius: 20px;
+  margin: 170px auto 5px;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-evenly;
   box-shadow: 1px 1px 1px 1px rgb(209, 204, 204);
 }
 .coming-soon {
