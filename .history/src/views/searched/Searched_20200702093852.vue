@@ -115,9 +115,6 @@ export default {
     },
     click() {
       this.value = item1
-    },
-    back() {
-      this.$router.go(-1)
     }
   },
   mounted() {

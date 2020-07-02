@@ -8,7 +8,7 @@
       <div class="search">
         <van-search v-model="value" show-action placeholder="请输入搜索关键词">
           <template #action>
-            <div @click="back">取消</div>
+            <div>取消</div>
           </template>
         </van-search>
       </div>
@@ -21,15 +21,15 @@
             <div class="searchHistory">
               <div class="h-top">
                 <div>搜索历史</div>
-                <div @click="dels">
+                <div>
                   <van-icon name="delete" size="20" />
                 </div>
               </div>
               <div class="box">
                 <div class="box-history">
                   <div v-for="(item1,index1) in arr" :key="index1" class="history">
-                    <div @click="click">{{item1}}</div>
-                    <div @click="del(index1)">
+                    <div>{{item1}}</div>
+                    <div>
                       <van-icon name="close" />
                     </div>
                   </div>
@@ -102,22 +102,6 @@ export default {
       });
       this.$utils.goDetail(item);
       this.$utils.getSearch(this.value);
-    },
-    // 删全部
-    dels() {
-      this.arr = []
-      localStorage.setItem('value',JSON.stringify(this.arr))
-    },
-    // 删单个
-    del(index1) {
-      this.arr.splice(index1,1)
-      localStorage.setItem('value',JSON.stringify(this.arr))
-    },
-    click() {
-      this.value = item1
-    },
-    back() {
-      this.$router.go(-1)
     }
   },
   mounted() {

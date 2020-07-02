@@ -8,7 +8,7 @@
       <div class="search">
         <van-search v-model="value" show-action placeholder="请输入搜索关键词">
           <template #action>
-            <div @click="back">取消</div>
+            <div>取消</div>
           </template>
         </van-search>
       </div>
@@ -21,19 +21,10 @@
             <div class="searchHistory">
               <div class="h-top">
                 <div>搜索历史</div>
-                <div @click="dels">
-                  <van-icon name="delete" size="20" />
-                </div>
+                <div><van-icon name="delete"  size="15"/></div>
               </div>
-              <div class="box">
-                <div class="box-history">
-                  <div v-for="(item1,index1) in arr" :key="index1" class="history">
-                    <div @click="click">{{item1}}</div>
-                    <div @click="del(index1)">
-                      <van-icon name="close" />
-                    </div>
-                  </div>
-                </div>
+              <div v-for="(item1,index1) in arr" :key="index1">
+                <div>{{item1}}</div>
               </div>
             </div>
           </div>
@@ -102,22 +93,6 @@ export default {
       });
       this.$utils.goDetail(item);
       this.$utils.getSearch(this.value);
-    },
-    // 删全部
-    dels() {
-      this.arr = []
-      localStorage.setItem('value',JSON.stringify(this.arr))
-    },
-    // 删单个
-    del(index1) {
-      this.arr.splice(index1,1)
-      localStorage.setItem('value',JSON.stringify(this.arr))
-    },
-    click() {
-      this.value = item1
-    },
-    back() {
-      this.$router.go(-1)
     }
   },
   mounted() {
@@ -174,45 +149,14 @@ export default {
   width: 100%;
   height: 100%;
   margin-top: 20px;
-  background: #fff;
 }
 .h-top {
   width: 100%;
   height: 20px;
   display: flex;
-  justify-content: space-around;
+ justify-content: space-around;
   align-items: center;
   font-size: 18px;
   color: #999;
-}
-.box {
-  width: 100%;
-  height: 60px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.box-history {
-  width: 95%;
-  height: 95%;
-  background: #fff;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.history {
-  width: 60px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 100px;
-  height: 30px;
-  background: #fff;
-  border: 1px solid rgb(241, 240, 240);
-  color: #999;
-  font-size: 12px;
 }
 </style>

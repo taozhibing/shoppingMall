@@ -8,7 +8,7 @@
       <div class="search">
         <van-search v-model="value" show-action placeholder="请输入搜索关键词">
           <template #action>
-            <div @click="back">取消</div>
+            <div>取消</div>
           </template>
         </van-search>
       </div>
@@ -115,9 +115,6 @@ export default {
     },
     click() {
       this.value = item1
-    },
-    back() {
-      this.$router.go(-1)
     }
   },
   mounted() {
