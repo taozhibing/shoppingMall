@@ -85,6 +85,7 @@ export default {
     // 平滑
     new BScroll(this.$refs.goods, {
       scrollX: true,
+      click: true
     });
   },
   watch: {},

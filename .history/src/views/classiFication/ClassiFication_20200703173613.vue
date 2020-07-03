@@ -16,6 +16,7 @@
             <div v-for="(item,index) in dataList" :key="index" @click="goDetail(item)">
               <van-card
                 :price="item.present_price"
+                price-color='red'
                 :title="item.name"
                 :thumb="item.image_path"
                 :origin-price="item.orl_price"

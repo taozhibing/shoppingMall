@@ -5,7 +5,7 @@
       <search></search>
     </div>
     <br />
-    <div class="val" ref="val">
+    <div class="goods" ref="goods">
       <div class="content">
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh" success-text="刷新成功">
           <swipeltem :obj="obj"></swipeltem>
@@ -99,7 +99,7 @@ export default {
       .catch(err => {
         console.log(err);
       });
-    new BScroll(this.$refs.val, {
+    new BScroll(this.$refs.goods, {
       scrollY: true,
       click: true
     });
@@ -118,10 +118,8 @@ export default {
   background: #fff;
   width: 100%;
 }
-.val {
-  height: 650px;
-}
 .content {
-  height: auto;
+  flex: 1;
+  display: flex;
 }
 </style>

@@ -99,7 +99,7 @@ export default {
       .catch(err => {
         console.log(err);
       });
-    new BScroll(this.$refs.val, {
+    new BScroll(this.$refs.goods, {
       scrollY: true,
       click: true
     });

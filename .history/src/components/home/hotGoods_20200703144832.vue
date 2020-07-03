@@ -11,8 +11,8 @@
           </div>
           <div class="imgfont">{{item.name}}</div>
           <div class="img-style">
-            <div class="prifont">¥{{item.price}}</div>
-            <div class="img-font">¥{{item.price}}</div>
+            <div class="price">¥{{item.price}}</div>
+            <div class="old-price">¥{{item.price}}</div>
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default {
 img {
   width: 80%;
 }
-.imgfont {
+.old-price {
   width: 160px;
   font-size: 14px;
   overflow: hidden;
@@ -108,7 +108,7 @@ img {
   width: 100%;
   color: white;
 }
-.prifont {
+.price {
   color: red;
 }
 .box{

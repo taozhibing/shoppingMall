@@ -5,20 +5,18 @@
       <search></search>
     </div>
     <br />
-    <div class="val" ref="val">
-      <div class="content">
-        <van-pull-refresh v-model="isLoading" @refresh="onRefresh" success-text="刷新成功">
-          <swipeltem :obj="obj"></swipeltem>
-          <category :category="category"></category>
-          <advertesPicture :advertesPicture="advertesPicture"></advertesPicture>
-          <br />
-          <recommend :recommend="recommend"></recommend>
-          <floor1 :floor1="floor1"></floor1>
-          <floor2 :floor2="floor2"></floor2>
-          <floor3 :floor3="floor3"></floor3>
-          <hotGoods :hotGoods="hotGoods"></hotGoods>
-        </van-pull-refresh>
-      </div>
+    <div class="content">
+      <van-pull-refresh v-model="isLoading" @refresh="onRefresh" success-text="刷新成功">
+        <swipeltem :obj="obj"></swipeltem>
+        <category :category="category"></category>
+        <advertesPicture :advertesPicture="advertesPicture"></advertesPicture>
+        <br />
+        <recommend :recommend="recommend"></recommend>
+        <floor1 :floor1="floor1"></floor1>
+        <floor2 :floor2="floor2"></floor2>
+        <floor3 :floor3="floor3"></floor3>
+        <hotGoods :hotGoods="hotGoods"></hotGoods>
+      </van-pull-refresh>
     </div>
   </div>
 </template>
@@ -99,7 +97,7 @@ export default {
       .catch(err => {
         console.log(err);
       });
-    new BScroll(this.$refs.val, {
+      new BScroll(this.$refs.goods, {
       scrollY: true,
       click: true
     });
@@ -118,10 +116,8 @@ export default {
   background: #fff;
   width: 100%;
 }
-.val {
-  height: 650px;
-}
 .content {
-  height: auto;
+  flex: 1;
+  display: flex;
 }
 </style>

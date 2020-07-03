@@ -22,7 +22,7 @@
               />
             </div>
             </div>
-            <div class="dv" v-else>暂无此类，敬请期待~~~~~</div>
+            <div v-else>暂无此类，敬请期待~~~~~</div>
           </van-tab>
         </van-tabs>
       </div>
@@ -74,7 +74,7 @@ export default {
     goDetail(item) {
       console.log(item);
       this.$router.push({
-        path: "/detail",
+        path: "/details",
         query: { id: item.id }
       });
       this.$utils.goDetail(item)
@@ -116,10 +116,5 @@ export default {
 }
 .box {
   display: flex;
-}
-.dv {
-  color: #999;
-  display: flex;
-  justify-content: center;
 }
 </style>

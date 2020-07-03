@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="cate">商品分类</div>
-    <div class="box">
+    <div class="d-flex">
       <div>
         <van-sidebar v-model="activeKey" @change="onChange">
           <div v-for="(item,index) in category" :key="index">
@@ -12,7 +12,6 @@
       <div class="tab">
         <van-tabs v-model="active" @click="clickItem" line-width="20%" title-active-color="red">
           <van-tab v-for="(item,index1) in bxMallSubDto" :key="index1" :title="item.mallSubName">
-            <div v-if="dataList.length > 0">
             <div v-for="(item,index) in dataList" :key="index" @click="goDetail(item)">
               <van-card
                 :price="item.present_price"
@@ -21,8 +20,6 @@
                 :origin-price="item.orl_price"
               />
             </div>
-            </div>
-            <div class="dv" v-else>暂无此类，敬请期待~~~~~</div>
           </van-tab>
         </van-tabs>
       </div>
@@ -74,7 +71,7 @@ export default {
     goDetail(item) {
       console.log(item);
       this.$router.push({
-        path: "/detail",
+        path: "/details",
         query: { id: item.id }
       });
       this.$utils.goDetail(item)
@@ -113,13 +110,5 @@ export default {
 }
 /deep/.van-tabs--line .van-tabs__wrap {
   height: 60px;
-}
-.box {
-  display: flex;
-}
-.dv {
-  color: #999;
-  display: flex;
-  justify-content: center;
 }
 </style>

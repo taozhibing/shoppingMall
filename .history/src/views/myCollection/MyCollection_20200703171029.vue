@@ -3,7 +3,7 @@
     <div class="top">
       <van-nav-bar title="我的收藏" fixed:true left-arrow @click-left="onClickLeft" />
     </div>
-    <div v-if="this.collect.length < 1">
+    <div v-if="collect.length < 1">
       <div class="dv">暂无收藏商品~~~</div>
     </div>
     <div v-else>

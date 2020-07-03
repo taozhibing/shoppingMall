@@ -52,7 +52,7 @@ export default {
     // 跳转详情页
     goDetail(index) {
       this.$router.push({
-        path: "/detail",
+        name: "detail",
         query: { id: this.recommend[index].goodsId }
       });
       this.$utils.goDetail(this.recommend[index])
@@ -85,6 +85,7 @@ export default {
     // 平滑
     new BScroll(this.$refs.goods, {
       scrollX: true,
+      click: true
     });
   },
   watch: {},

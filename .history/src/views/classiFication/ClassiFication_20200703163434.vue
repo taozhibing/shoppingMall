@@ -74,7 +74,7 @@ export default {
     goDetail(item) {
       console.log(item);
       this.$router.push({
-        path: "/detail",
+        path: "/details",
         query: { id: item.id }
       });
       this.$utils.goDetail(item)

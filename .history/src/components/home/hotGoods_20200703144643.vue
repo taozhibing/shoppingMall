@@ -3,7 +3,7 @@
     <div class="floor">
       <div class="f-font2">热销商品</div>
     </div>
-    <div class="box">
+    <div class="zmj">
       <div class="imgbox" v-for="(item,index) in hotGoods" :key="index" @click="details(index)">
         <div class="left">
           <div>
@@ -111,7 +111,7 @@ img {
 .prifont {
   color: red;
 }
-.box{
+.zmj{
   display:flex;
   flex-wrap: wrap;
 }

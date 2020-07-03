@@ -3,7 +3,7 @@
     <div class="floor">
       <div class="f-font2">热销商品</div>
     </div>
-    <div class="box">
+    <div class="zmj">
       <div class="imgbox" v-for="(item,index) in hotGoods" :key="index" @click="details(index)">
         <div class="left">
           <div>
@@ -51,10 +51,6 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-.flbox {
-  width: 100%;
-  margin-bottom: 55px;
-}
 .fff {
   margin-bottom: 30px;
 }
@@ -75,25 +71,35 @@ export default {
   background: white;
 }
 .left {
-  background: white; 
+  float: left;
+  width: 50%;
+  background: white;
 }
-.imgbox {
-  display: flex;
-  flex-wrap: wrap;
+.right {
+  float: right;
+  background: white;
   width: 50%;
 }
 img {
   width: 80%;
 }
+.div {
+  display: flex;
+}
+.img-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .imgfont {
-  width: 160px;
+  width: 180px;
   font-size: 14px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: red;
 }
 .img-font {
+  color: red;
   text-decoration: line-through;
   font-size: 12px;
   margin-left: 10px;
@@ -101,18 +107,5 @@ img {
 .img-style {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-.fllfoot {
-  height: 100px;
-  width: 100%;
-  color: white;
-}
-.prifont {
-  color: red;
-}
-.box{
-  display:flex;
-  flex-wrap: wrap;
 }
 </style>

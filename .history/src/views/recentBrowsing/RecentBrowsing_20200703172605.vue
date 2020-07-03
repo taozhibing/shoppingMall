@@ -3,7 +3,7 @@
     <div>
       <van-nav-bar title="最近浏览" fixed:true left-arrow @click-left="onClickLeft" />
     </div>
-    <div v-if="nickname !== null">
+    <div v-if="nickname !== ''">
       <div v-if="views.length === 0">
         <div class="address-none">暂无浏览历史~~</div>
       </div>
