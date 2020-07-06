@@ -163,6 +163,7 @@ export default {
       this.shopList = this.shopList.filter(item => {
         return item.check === true;
       });
+      if (this.ass.length > 0) {
         this.$router.push({
           path: "/settlement",
           query: {
@@ -172,6 +173,9 @@ export default {
           }
         });
         localStorage.setItem("shopList", JSON.stringify(this.shopList));
+      }else {
+        this.$toast.fail('请选择您要结算的商品')
+      }
     }
   },
   mounted() {

@@ -163,15 +163,15 @@ export default {
       this.shopList = this.shopList.filter(item => {
         return item.check === true;
       });
-        this.$router.push({
-          path: "/settlement",
-          query: {
-            shopList: JSON.stringify(this.shopList),
-            total: this.total,
-            flags: this.flags
-          }
-        });
-        localStorage.setItem("shopList", JSON.stringify(this.shopList));
+      this.$router.push({
+        path: "/settlement",
+        query: {
+          shopList: JSON.stringify(this.shopList),
+          total: this.total,
+          flag: this.flag
+        }
+      });
+      localStorage.setItem("shopList", JSON.stringify(this.shopList));
     }
   },
   mounted() {

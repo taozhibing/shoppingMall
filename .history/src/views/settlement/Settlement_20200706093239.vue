@@ -31,8 +31,7 @@
       <div class="caitiao">
         <img src="../../assets/caitiao.jpg" width="100%" />
       </div>
-      <!--购物车页跳转结算过来-->
-      >
+      <!--购物车页跳转结算过来-->>
       <div v-if="flags ==='1'">
         <div v-for="(item,index) in shopList" :key="index" class="box">
           <img :src="item.image_path" class="img" />
@@ -48,8 +47,7 @@
           <van-submit-bar :price="this.total*100" button-text="提交订单" @submit="onSubmit" />
         </div>
       </div>
-      <!--详情页跳转结算过来-->
-      >
+      <!--详情页跳转结算过来-->>
       <div v-if="flags==='0'" class="box">
         <img :src="this.goodsOne.image_path" class="img" />
         <div class="item">
@@ -136,24 +134,23 @@ export default {
     }
   },
   mounted() {
+    // 详情传参
+    if(this.flags === '0'){
+      if (localStorage.goodsOne) {
+      this.goodsOne = JSON.parse(localStorage.getItem("goodsOne"));
+    } else {
+      this.goodsOne = JSON.parse(this.$route.query.goodsOne);
+    }
+    }
+    
+    // 购物车传参
+    if (localStorage.shopList) {
+      this.shopList = JSON.parse(localStorage.getItem("shopList"));
+    } else {
+      this.shopList = JSON.parse(this.$route.query.shopList);
+    }
     this.counts = this.$route.query.count;
     this.flags = this.$route.query.flags;
-    // 详情传参
-    if (this.flags === "0") {
-      if (localStorage.goodsOne) {
-        this.goodsOne = JSON.parse(localStorage.getItem("goodsOne"));
-      } else {
-        this.goodsOne = JSON.parse(this.$route.query.goodsOne);
-      }
-    }
-    if (this.flags === "1") {
-      // 购物车传参
-      if (localStorage.shopList) {
-        this.shopList = JSON.parse(localStorage.getItem("shopList"));
-      } else {
-        this.shopList = JSON.parse(this.$route.query.shopList);
-      }
-    }
     this.total = this.$route.query.total;
     // 获取默认地址
     this.$api

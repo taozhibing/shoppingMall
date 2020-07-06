@@ -163,15 +163,19 @@ export default {
       this.shopList = this.shopList.filter(item => {
         return item.check === true;
       });
+      if (this.shopList.length > 0) {
         this.$router.push({
           path: "/settlement",
           query: {
             shopList: JSON.stringify(this.shopList),
             total: this.total,
-            flags: this.flags
+            flag: this.flag
           }
         });
         localStorage.setItem("shopList", JSON.stringify(this.shopList));
+      }else {
+        this.$toast.fail('请选择您要结算的商品')
+      }
     }
   },
   mounted() {

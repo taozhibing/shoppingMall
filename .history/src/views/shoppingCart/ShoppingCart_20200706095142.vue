@@ -172,6 +172,7 @@ export default {
           }
         });
         localStorage.setItem("shopList", JSON.stringify(this.shopList));
+      }
     }
   },
   mounted() {

@@ -7,8 +7,12 @@
       <van-tabbar v-model="active" active-color="red" inactive-color="#000">
         <van-tabbar-item replace to="/" icon="wap-home-o">商城</van-tabbar-item>
         <van-tabbar-item icon="wap-nav" replace to="classiFication">分类</van-tabbar-item>
-          <van-tabbar-item v-if="nickname !== ''" icon="shopping-cart" replace to="shoppingCart" :badge="setNumber">购物车</van-tabbar-item>
-          <van-tabbar-item v-if="nickname === ''" icon="shopping-cart" replace to="shoppingCart">购物车</van-tabbar-item>
+        <div v-if="nickname === ''">
+          <van-tabbar-item icon="shopping-cart" replace to="shoppingCart" :badge="setNumber">购物车</van-tabbar-item>
+        </div>
+        <div v-else>
+          <van-tabbar-item icon="shopping-cart" replace to="shoppingCart">购物车</van-tabbar-item>
+        </div>
         <van-tabbar-item icon="manager" replace to="myself">我的</van-tabbar-item>
       </van-tabbar>
     </div>
@@ -23,7 +27,7 @@ export default {
   data() {
     return {
       active: 0,
-      nickname: ""
+      nickname : ''
     };
   },
   methods: {},
