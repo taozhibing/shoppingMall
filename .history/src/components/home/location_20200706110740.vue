@@ -55,13 +55,13 @@ export default {
         // data是具体的定位信息
         console.log(data);
         _this.LocationCity = data.addressComponent.city;
-        _this.$toast.success("定位成功");
+        this.$toast.fail("获取您当前位置失败！");
         _this.$store.commit("setCitya", data.addressComponent.city);
       }
 
       function onError(data) {
         // 定位出错
-        _this.$toast.fail("获取您当前位置失败！");
+        this.$toast.fail("获取您当前位置失败！");
       }
     });
     _this.cityName = localStorage.getItem("cityName");

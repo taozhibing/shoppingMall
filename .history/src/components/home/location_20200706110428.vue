@@ -2,7 +2,7 @@
   <div>
     <div class="box" v-if="cityName === null">
       <van-icon name="location-o" @click="location" />
-      <div @click="getAddress" class="font">{{LocationCity}}</div>
+      <div @click="getAddress"><van-loading size="24px">{{LocationCity}}</van-loading></div>
     </div>
     <div class="box" v-else>
       <van-icon name="location-o" @click="location" />
@@ -55,13 +55,12 @@ export default {
         // data是具体的定位信息
         console.log(data);
         _this.LocationCity = data.addressComponent.city;
-        _this.$toast.success("定位成功");
         _this.$store.commit("setCitya", data.addressComponent.city);
       }
 
       function onError(data) {
         // 定位出错
-        _this.$toast.fail("获取您当前位置失败！");
+        alert("获取您当前位置失败！");
       }
     });
     _this.cityName = localStorage.getItem("cityName");
@@ -76,8 +75,5 @@ export default {
   display: flex;
   align-items: center;
   margin-top: 16px !important;
-}
-.font {
-  font-size: 14px;
 }
 </style>

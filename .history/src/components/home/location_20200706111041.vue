@@ -55,7 +55,7 @@ export default {
         // data是具体的定位信息
         console.log(data);
         _this.LocationCity = data.addressComponent.city;
-        _this.$toast.success("定位成功");
+        _this.$toast.namesuccess("定位成功");
         _this.$store.commit("setCitya", data.addressComponent.city);
       }
 

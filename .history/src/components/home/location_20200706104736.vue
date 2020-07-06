@@ -2,7 +2,7 @@
   <div>
     <div class="box" v-if="cityName === null">
       <van-icon name="location-o" @click="location" />
-      <div @click="getAddress" class="font">{{LocationCity}}</div>
+      <div @click="getAddress">{{city}}</div>
     </div>
     <div class="box" v-else>
       <van-icon name="location-o" @click="location" />
@@ -18,7 +18,7 @@ export default {
   components: {},
   data() {
     return {
-      LocationCity: "正在定位...", //给渲染层定义一个初始值
+      city: "",
       cityName: ""
     };
   },
@@ -54,14 +54,12 @@ export default {
       function onComplete(data) {
         // data是具体的定位信息
         console.log(data);
-        _this.LocationCity = data.addressComponent.city;
-        _this.$toast.success("定位成功");
+        _this.city = data.addressComponent.city;
         _this.$store.commit("setCitya", data.addressComponent.city);
       }
 
       function onError(data) {
         // 定位出错
-        _this.$toast.fail("获取您当前位置失败！");
       }
     });
     _this.cityName = localStorage.getItem("cityName");
@@ -76,8 +74,5 @@ export default {
   display: flex;
   align-items: center;
   margin-top: 16px !important;
-}
-.font {
-  font-size: 14px;
 }
 </style>

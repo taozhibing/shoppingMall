@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="box" v-if="cityName === null">
-      <van-icon name="location-o" @click="location" />
-      <div @click="getAddress" class="font">{{LocationCity}}</div>
+      <van-icon name="location-o" @click="location"/>
+      <div @click="getAddress">{{city}}</div>
     </div>
     <div class="box" v-else>
-      <van-icon name="location-o" @click="location" />
+     <van-icon name="location-o" @click="location"/>
       <div @click="getAddress">{{cityName}}</div>
     </div>
   </div>
@@ -18,17 +18,18 @@ export default {
   components: {},
   data() {
     return {
-      LocationCity: "正在定位...", //给渲染层定义一个初始值
-      cityName: ""
+      city: "",
+      cityName :''
     };
   },
   methods: {
     getAddress() {
-      this.$router.push("/city");
+      this.$router.push('/city')
     },
     location() {
-      localStorage.removeItem("cityName");
+      localStorage.removeItem('cityName')
       this.$router.go(0);
+      
     }
   },
   mounted() {
@@ -51,23 +52,24 @@ export default {
       AMap.event.addListener(geolocation, "complete", onComplete);
       AMap.event.addListener(geolocation, "error", onError);
 
-      function onComplete(data) {
+      setTimeout(function onComplete(data) {
         // data是具体的定位信息
         console.log(data);
-        _this.LocationCity = data.addressComponent.city;
-        _this.$toast.success("定位成功");
-        _this.$store.commit("setCitya", data.addressComponent.city);
-      }
+        <van-loading size="24px">加载中...</van-loading>
+        _this.city = data.addressComponent.city;
+        _this.$store.commit('setCitya',data.addressComponent.city)
+
+      },10000)
 
       function onError(data) {
         // 定位出错
-        _this.$toast.fail("获取您当前位置失败！");
       }
     });
-    _this.cityName = localStorage.getItem("cityName");
+    _this.cityName = localStorage.getItem('cityName')
   },
   watch: {},
-  computed: {}
+  computed: {
+  }
 };
 </script>
 
@@ -76,8 +78,6 @@ export default {
   display: flex;
   align-items: center;
   margin-top: 16px !important;
-}
-.font {
-  font-size: 14px;
+  
 }
 </style>
