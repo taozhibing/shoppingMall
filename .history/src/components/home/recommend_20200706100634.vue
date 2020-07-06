@@ -76,7 +76,7 @@ export default {
           })
           .then(res => {
             this.$toast.success("加入购物车成功");
-            // this.$router.go(0)
+            this.$router.go(0)
           })
           .catch(err => {});
       }
